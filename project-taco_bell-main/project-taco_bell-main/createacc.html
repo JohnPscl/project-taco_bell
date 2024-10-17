@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Vault - Sign Up</title>
+    <link rel="stylesheet" href="main3.css" />
+  </head>
+  <body>
+    <div class="mid">
+      <h1>
+        Faculty <span class="light-weight">Vault</span>
+      </h1>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-container">
+        <div class="form-header">
+          <h1>Create a new account</h1>
+          <p>Secure your certificates today!</p>
+        </div>
+        <hr />
+        <form id="signup-form">
+          <div class="name-fields">
+            <input type="text" id="fname" placeholder="First Name" required />
+            <input type="text" id="lname" placeholder="Last Name" required />
+          </div>
+
+          <div class="form-control">
+            <input type="text" id="username" placeholder="Email" required />
+            <small class="error-msg" id="username-error"></small>
+          </div>
+
+          <div class="form-control">
+            <input type="email" id="email" placeholder="Faculty ID" required />
+            <small class="error-msg" id="email-error"></small>
+          </div>
+
+          <div class="form-control">
+            <input type="password" id="password" placeholder="Password" required />
+            <small class="error-msg" id="password-error"></small>
+          </div>
+
+          <div class="terms">
+            <p>Users who engage with Faculty Vault may have shared your contact information with us <a href="#">Learn more.</a></p>
+            <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a><br />
+              You may receive email or SMS notifications, which you can opt out <br>
+              of at any time.</p>
+          </div>
+
+          <div class="btn">
+            <button href="#" type="submit">Sign Up</button>
+          </div>
+
+          <div class="alreadysign">
+            <a href="signin.html" id="signInLink">Already have an account?</a>
+          </div>          
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="createacc.js"></script>
+</html>
