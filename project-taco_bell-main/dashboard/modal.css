@@ -1,0 +1,410 @@
+/* MODAL - NEW FILE */
+
+.modal-new {
+  display: none; /* Hide by default */
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto; /* Full-screen background */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* Modal content box styling */
+.modal-new-content {
+  position: relative;
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  width: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button styling */
+.close-btn-new {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px; /* Set consistent width */
+  height: 30px; /* Set consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Ensure circular base */
+  padding: 0; /* Remove additional padding */
+}
+
+.close-btn-new:hover {
+  background-color: #fff6e8;
+  border-radius: 50%; /* Keep rounded shape */
+}
+
+
+/* Modal header styling */
+.modal-new h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Choose file button styling */
+.choose-file-btn {
+  display: inline-block;
+  background-color: #fff6e8;
+  color: #383838;
+  padding: 5px 16px;
+  border: 1px solid #383838;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.choose-file-btn:hover{
+  background-color: #fdf0df;
+}
+
+/* "No file chosen" text styling */
+.file-chosen-text {
+  color: #777;
+  font-style: italic;
+  font-size: 12px;
+}
+
+/* Input fields container (for Item Name and Description) */
+.modal-fields-row {
+  display: flex;
+  gap: 20px; /* Space between the fields */
+  margin-bottom: 15px; /* Add space below row */
+}
+
+/* Field styling (Category, Date) */
+.modal-field {
+  flex: 1;
+}
+
+.modal-label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.modal-input,
+.modal-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.modal-input-icon {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 30px; /* Add padding to make space for the icon */
+}
+
+
+/* Textarea specific styling */
+.modal-textarea {
+  resize: vertical; /* Allow vertical resize */
+  height: 100px; /* Set height for better visibility */
+}
+
+/* Buttons container */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0px; /* Space between buttons */
+  margin-top: 20px; /* Spacing from fields above */
+}
+
+.modal-btn {
+  background-color: #eadbc2;
+  color: #383838;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  font-size: 13px;
+  width: 15%;
+}
+
+.modal-btn {
+  background-color: #f1e3ce;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  background-color: transparent;
+  color: #777;
+}
+
+.cancel-btn:hover {
+  background-color: #fff6e8; /* Keeps the same color */
+  border: none; /* Removes any border change */
+  cursor: pointer; /* Keeps the pointer */
+  border-radius: 40px 40px 40px 40px;
+}
+
+.input-icon {
+  position: relative; /* Create a positioning context */
+}
+
+.input-icon i {
+  position: absolute; /* Position the icon absolutely */
+  left: 10px; /* Adjust left spacing */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust to truly center */
+  color: #777; /* Icon color */
+}
+
+.remove-file-btn {
+  color: red; /* Change to your desired color */
+  cursor: pointer;
+  margin-left: 10px; /* Spacing from the file text */
+  font-size: 18px; /* Adjust size as needed */
+  display: inline; /* Ensure it's displayed inline */
+}
+
+/* END MODAL - NEW FILE */
+
+/* MODAL - FILTER */
+.modal-filter {
+  display: none; /* Hide by default */
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.modal-filter-content {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  height: 70%;
+  min-width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-filter h2 {
+  margin-bottom: 30px;
+}
+
+/* Close button styling */
+.close-btn-filter {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px; /* Set consistent width */
+  height: 30px; /* Set consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Ensure circular base */
+  padding: 0; /* Remove additional padding */
+}
+
+.close-btn-filter:hover {
+  background-color: #fff6e8;
+  border-radius: 50%; /* Keep rounded shape */
+}
+
+
+/* Filter input label and input field */
+.filter-container {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+  margin-bottom: 15px; /* Space below each input */
+}
+
+.filter-label {
+  font-size: 14px;
+  color: #333;
+  width: 30%; /* Consistent width for all labels */
+  text-align: left; /* Align label text to the right */
+  padding-right: 10px; /* Space between label and input */
+  margin-bottom: 8px; /* Remove bottom margin */
+}
+
+
+
+.filter-input {
+  flex-grow: 1; /* Allow input to take remaining space */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.short-input {
+  width: 60%;
+  max-width: 200px;
+}
+
+
+/* Button Styles */
+.apply-filter-btn {
+  background-color: #eadbc2; /* Button background */
+  color: #383838; /* Button text color */
+  border: none;
+  padding: 10px 15px;
+  font-size: 13px;
+  margin: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.apply-filter-btn:hover {
+  background-color: #f1e3ce; /* Darker shade on hover */
+}
+
+.reset-filter-btn {
+  background-color: transparent;
+  color: #383838;
+  font-size: 12px;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.reset-filter-btn:hover {
+  background-color: #fff6e8;
+  border-radius: 50px;
+}
+
+/* Checkbox container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 5px; /* Space between each checkbox */
+}
+
+
+
+.checkbox-container input[type="radio"] {
+  margin-right: 5px; /* Space between radio button and label */
+  margin-left: 15px; /* Adjust spacing for layout */
+}
+
+
+/* END MODAL - FILTER */
+
+
+
+
+
+
+/* MODAL - QUIT */
+
+/* Button Style */
+button {
+    padding: 10px 20px;
+    background-color: #f1e3ce;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color:#eadbc2;
+  }
+  
+  /* Modal (Pop-up) Styles */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .modal-message {
+    margin-top: 30px;
+  }
+  
+  
+/* Close Button "x" */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+  cursor: pointer;
+  width: 30px; /* Set consistent width */
+  height: 30px; /* Set consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* Ensure circular base */
+  padding: 0; /* Remove additional padding */
+}
+
+.close-btn:hover {
+  background-color: #fff6e8;
+  border-radius: 50%; /* Keep rounded shape */
+}
+
+
+
+  /* END MODAL - QUIT */

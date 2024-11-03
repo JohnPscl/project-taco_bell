@@ -1,0 +1,257 @@
+@font-face {
+    font-family: Poppins-Reg;
+    src: url(Poppins-Reg.ttf);
+  }
+
+  @font-face {
+    font-family: Poppins-ExtraLight;
+    src: url(Poppins-ExtraLight.ttf);
+  }
+
+
+/*
+Variables
+*/
+
+:root {
+
+    /*
+    Colors
+    */
+    
+    /*Solid Colors*/
+    
+    /*Background*/
+    --peach-puff: #fff6e8;
+    --light-beige: #f1e3ce;
+    
+    /*Text Colors*/
+    --eerie-black-2: hsl(240, 2%, 12%);
+    /*shadow*/
+    --eerie-black-1: hsl(240, 2%, 13%);
+    /*Outline*/
+    
+    /*Normal State*/
+    --light-gray: #4a4a4ab2;
+    /*Hovered State*/
+    --dark-gray: #55585d;
+    /*Clicked State*/
+    --jet: #383838;
+
+    
+    /*
+    Typography
+    */
+    
+--ff-poppins: 'Poppins', sans-serif;
+    
+    /* font-size */
+    --fs-1: 21px;
+    --fs-2: 18px;
+    --fs-3: 17px;
+    --fs-4: 16px;
+    --fs-5: 15px;
+    --fs-6: 14px;
+    --fs-7: 13px;
+    --fs-8: 11px;
+    /*Additional FS*/
+    --fs-9: 44px;
+    --fs-10: 24px;
+    --fs-11: 60px;
+    --fs-12: 25px;
+    
+    /* font-weight */
+    --fw-300: 300;
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+    --fw-800: 800;
+    }
+
+/*
+Reused CSS
+*/
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--light-beige);
+    font-family: var(--ff-poppins);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/*Transition*/
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
+
+.container {
+    font-weight: var(--ff-poppins);
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 180px;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.container .left,
+.container .right {
+    flex-basis: 48%;
+}
+
+/*Title*/
+
+.left h1 {
+  font-family: Poppins-Reg;
+  padding-top: 40px;
+  font-size: 75px;
+  font-weight: var(--fw-500); 
+}
+
+.light-weight {
+    font-family: Poppins-ExtraLight;
+    font-weight: 300; 
+  }
+
+.container .left h2 {
+    font-size: 30px;
+    line-height: 28px;
+    width: auto;
+    margin-top: 15px;
+    font-family: Poppins-Reg;
+    font-weight: 400;
+    color: #6d6d6c;
+}
+
+
+/*Form*/
+
+.container .right .form {
+    left: 20%;
+    bottom: 30px;
+    position: relative;
+    width: 400px;
+    padding: 40px 20px;
+    background-color: #fff5e7;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px black;
+}
+
+.container .right .form .form-group {
+    margin-bottom: -10px;
+}
+
+.container .right .form .form-group input {
+  background-color: #fff5e7;
+  position: relative;
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.container .right .form .form-group label {
+    font-weight: lighter;
+  position: relative;
+  left: 10px;
+  bottom: 40px;
+  font-size: 18px;
+  display: block;
+  opacity: 1;
+  color: #aaa;
+  pointer-events: none;
+  
+}
+.container .right .form .form-group input:focus + label,
+.container .right .form .form-group input:not(:placeholder-shown) + label {
+    opacity: 0;
+}
+
+/* Focus effect for the input */
+.container .right .form .form-group input:focus {
+    outline-color: #2c2c2c;
+    border-color: #525252;
+}
+
+.container .right .form .form-group input:focus {
+    outline-color: #2c2c2c;
+}
+
+.container .right .form .login-btn {
+  position: relative;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #4a4a4a;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: opacity .3s ease-in-out;
+}
+
+.container .right .form .login-btn:hover {
+    opacity: 1;
+    background-color: #525252;
+}
+
+.container .right .form a {
+    font-family: Poppins-ExtraLight;
+  position: relative;
+  margin-bottom: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #383838;
+    text-align: center;
+    margin: -10px 0;
+    display: block;
+   
+}
+
+.container .right .form a:hover {
+    text-decoration: underline;
+}
+
+
+.container .right .create {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.container .right .create button {
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding: 0px 40px;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+.container .right .create button:hover {
+    opacity: 0.9;
+}

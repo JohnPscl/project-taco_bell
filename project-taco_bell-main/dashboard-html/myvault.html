@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Side Navigation Bar in HTML CSS JavaScript</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="myvault.css" />
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="logo_item">
+        <i class="bx bx-menu" id="sidebarOpen"></i>
+        <img src="Assets/Logo/engineering logo.ico" alt="">Faculty Vault
+      </div>
+
+      <div class="main-content">
+        <div class="search-container">
+          <div class="search-bar">
+            <span class="navlink_icon">
+              <i class="bx bx-search"></i>
+            </span>
+            <input type="text" placeholder="Search">
+            <a href="#" class="settings1">
+              <span class="navlink_icon">
+                <i class="bx bx-filter"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar_content">
+        <i class="bi bi-grid"></i>
+        <i class='bx bx-sun' id="darkLight"></i>
+        <i class='bx bx-bell'></i>
+        <img src="images/profile.jpg" alt="" class="profile" />
+      </div>
+    </nav>
+
+    <!-- sidebar -->
+    <nav class="sidebar">
+      <div>
+        <a href="#" class="btn-link">
+          <button class="new-btn">
+            <img src="dashboard/Icons/plus.png" alt="Plus Icon" class="btn-icon"> New
+          </button>
+        </a>
+      </div>
+
+      <div class="menu_content">
+        <ul class="menu_items">
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-home-alt"></i>
+              </span>
+              <span class="navlink">My Vault</span>
+            </a>
+          </li>
+
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-star" ></i>
+              </span>
+              <span class="navlink">Favorites</span>
+            </a>
+          </li>
+
+          <li class="item">
+            <a href="#" class="nav_link">
+              <span class="navlink_icon">
+                <i class="bx bx-trash"></i>
+              </span>
+              <span class="navlink">Trash</span>
+            </a>
+          </li>
+
+          <li class="item">
+            <div class="nav_link submenu_item">
+              <span class="navlink_icon">
+                <i class="bx bx-cog"></i>
+              </span>
+              <span class="navlink">Settings</span>
+              <i class="bx bx-chevron-right arrow-left"></i>
+            </div>
+            <ul class="menu_items submenu">
+              <a href="#" class="nav_link sublink">Edit Profile</a>
+              <a href="#" class="nav_link sublink">Change Password</a>
+            </ul>
+          </li>
+        </ul>
+
+
+<!-- Sidebar Open / Close and Drop-up Menu -->
+<div class="bottom_content">
+  <div class="bottom" onclick="toggleDropUp()">
+    <div class="user-info">
+      <img class="user-img" src="dashboard/Icons/user.png" />
+      <div class="user-name">Username</div>
+    </div>
+    <div class="arrow-pos" >
+      <i class="bx bx-chevron-up arrow-up"></i>
+    </div>
+  </div>
+  <!-- Drop-up content -->
+  <div class="drop-up" id="drop-up">
+    <a href="signin.html" class="logout-link">Sign Out
+      <i class="bx bx-log-out"></i>
+    </a>
+    
+  </div>
+</div>
+
+      </div>
+    </nav>
+
+
+<!-- CONTENT -->
+
+   <h2>Welcome</h2>
+    
+
+    <!-- JavaScript -->
+    <script src="dashboard.js"></script>
+    <script src="myvault.js"></script>
+  </body>
+</html>
