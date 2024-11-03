@@ -1,0 +1,123 @@
+/* Main content container */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* Account heading */
+.page-heading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #4a4a4a;
+    padding: 10px;
+}
+
+/* Divider line */
+.divider {
+    border: 1px solid #ccc;
+    width: 95%;
+    margin-top: 5px;
+}
+
+/* Page title */
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Page tagline */
+.page-tagline {
+    font-size: 17px;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    padding: 10px;
+    text-align: center;
+    margin-top: -15px;
+}
+
+/* Rectangle Styling */
+.big-rectangle {
+    width: 95%;
+    height: 330px;
+    background-color: #f6ebdb;
+    border: 1px solid #b3b3b3;
+    margin-top: 50px;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Account Title Styling */
+.account-title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    margin-bottom: 5px;
+}
+
+/* Account Description Styling */
+.account-description {
+    font-size: 16px;
+    font-family: var(--ff-poppins);
+    color: #343232;
+}
+
+/* Buttons Container */
+.account-buttons {
+    margin-top: 30px;
+}
+
+/* Button Style */
+.account-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Hover Effect */
+.account-button:hover {
+    background-color: #fff6e8;
+}
+
+/* Remove border from the last button */
+.account-button:last-child {
+    border-bottom: none;
+}
+
+/* Label alignment */
+.account-button span:first-child {
+    font-size: 16px;
+    color: #343232;
+    flex: 1.5; /* Allows this to take up the space on the left */
+}
+
+/* User information alignment */
+.user-email,
+.user-password,
+.user-id {
+    font-size: 16px;
+    color: #4a4a4a;
+    flex: 2; /* Ensures the user info section has more space */
+    text-align: left;
+}
+
+/* Arrow alignment with margin */
+.arrow-left-2 {
+    font-size: 25px;
+    color: #343232;
+    margin-right: 15px; /* Adjust margin for consistent spacing */
+}
+#contentArea {
+    transition: none; /* Ensure no transitions */
+  }
