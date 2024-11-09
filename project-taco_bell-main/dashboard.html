@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Faculty Vault</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <title>Faculty Vault</title>
     <link rel="stylesheet" href="dashboard/dashboard.css" />
     <link rel="stylesheet" href="dashboard/modal.css" />
   </head>
@@ -14,9 +16,6 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-      <div class="logo_item">
-        <img src="Assets/Logo/engineering logo.ico" id="sidebarOpen alt="">Faculty Vault
-      </div>
 
       <div class="main-content">
         <div class="search-container">
@@ -42,6 +41,10 @@
 
     <!-- Sidebar -->
     <nav class="sidebar">
+      <div class="logo_item">
+        <img src="Assets/Logo/engineering logo.ico" alt="Logo" >
+        <span>Faculty Vault</span>
+    </div>
       <div>
           <a href="#" class="btn-link">
               <button class="new-btn" id="openNewModal">
@@ -77,7 +80,7 @@
                       <i class="bx bx-chevron-right arrow-left"></i>
                   </div>
                   <ul class="menu_items submenu">
-                      <li><a href="#" class="nav_link sublink" onclick="loadContent('personalInfo.html')">Personal Info</a></li>
+                      <li><a href="personal-info.html" class="nav_link sublink" onclick="loadContent('personalInfo.html')">Personal Info</a></li>
                       <li><a href="account-settings.html" class="nav_link sublink" onclick="loadContent('accountSettings.html')">Account Settings</a></li>
                   </ul>
               </li>
@@ -137,30 +140,7 @@
       <label for="fileLocation" class="filter-label">Location</label>
       <input type="text" id="fileLocation" placeholder="Enter city" class="filter-input"/>
     </div>
-    
-    <div class="filter-container">
-      <label class="filter-label">File Status</label>
-      
-      <div class="checkbox-container">
-        <input type="radio" id="fileTrash" name="fileStatus" value="fileTrash">
-        <label for="fileTrash">Trash</label>
-      </div>
-    
-      <div class="checkbox-container">
-        <input type="radio" id="fileFavorites" name="fileStatus" value="fileFavorites">
-        <label for="fileFavorites">Favorites</label>
-      </div>
-    
-      <div class="checkbox-container">
-        <input type="radio" id="fileActive" name="fileStatus" value="fileActive">
-        <label for="fileActive">Active</label>
-      </div>
-
-      <div class="checkbox-container">
-        <input type="radio" id="fileAll" name="fileStatus" value="fileAll">
-        <label for="fileAll">All</label>
-      </div>
-    </div>
+  
     
     <div class="modal-buttons">
       <button id="resetFilter" class="reset-filter-btn">Reset</button>
@@ -252,9 +232,23 @@
   </div>
 
 
-    <!-- JavaScript Files -->
-    <script src="dashboard/dashboard.js"></script>
-    <script src="dashboard/modal.js"></script>
+
+
+<!-- Content Section -->
+<div class="content">
+  <h1 class="page-heading">Welcome, username</h1>
+  <hr class="divider">
+
+  
+</div>
+
+<!-- JavaScript Files -->
+<script src="dashboard/dashboard.js"></script>
+<script src="dashboard/modal.js"></script>
+<script src="dashboard/account-settings.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 
     
   </body>

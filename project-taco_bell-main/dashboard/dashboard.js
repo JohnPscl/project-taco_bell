@@ -121,3 +121,4 @@ clearSearchButton.addEventListener('click', () => {
   searchInput.value = ''; // Clear the input field
   clearSearchButton.style.display = 'none'; // Hide the "X" button
 });
+
