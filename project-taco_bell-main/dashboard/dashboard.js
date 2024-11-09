@@ -121,6 +121,8 @@ clearSearchButton.addEventListener('click', () => {
   searchInput.value = ''; // Clear the input field
   clearSearchButton.style.display = 'none'; // Hide the "X" button
 });
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const editProfileLink = document.getElementById('editProfileLink');
   const editProfileSection = document.getElementById('editProfileSection');
@@ -128,48 +130,56 @@ document.addEventListener("DOMContentLoaded", function () {
   const accountSettingsContent = document.getElementById('accountSettingsContent');
   const navbar = document.querySelector(".navbar");
 
-  // Cancel and Save buttons for Account Settings
+  // Cancel and Save buttons
   const cancelEditProfileBtn1 = document.getElementById('cancelEditProfile1');
   const saveEditProfileBtn1 = document.getElementById('saveEditProfile1');
+  const cancelEditProfileBtn = document.getElementById('cancelEditProfile');
+  const saveEditProfileBtn = document.getElementById('saveEditProfile');
 
-  // Toggle visibility of sections
+  // Show section and hide navbar
   function toggleSection(sectionToShow) {
-    // Hide both sections initially
     editProfileSection.style.display = "none";
     accountSettingsContent.style.display = "none";
+    navbar.style.display = "none";
     
-    // Show the appropriate section
+    // Show the selected section
     if (sectionToShow === "editProfile") {
       editProfileSection.style.display = "block";
-      navbar.style.display = "none";
     } else if (sectionToShow === "accountSettings") {
       accountSettingsContent.style.display = "block";
-      navbar.style.display = "none";
     }
   }
 
-  // Show Edit Profile Section
+  // Return to main view with navbar visible
+  function restoreMainView() {
+    editProfileSection.style.display = "none";
+    accountSettingsContent.style.display = "none";
+    navbar.style.display = "flex"; // Show the navbar again
+  }
+
+  // Event listeners for showing sections
   editProfileLink.addEventListener('click', function (event) {
     event.preventDefault();
     toggleSection("editProfile");
   });
 
-  // Show Account Settings Section
   accountSettingLink.addEventListener('click', function (event) {
     event.preventDefault();
     toggleSection("accountSettings");
   });
 
-  // Cancel button for Account Settings
-  cancelEditProfileBtn1.addEventListener('click', function () {
-    accountSettingsContent.style.display = "none";
-    navbar.style.display = "flex"; // Show the navbar again
+  // Event listeners for Cancel and Save buttons in Account Settings
+  cancelEditProfileBtn1.addEventListener('click', restoreMainView);
+  saveEditProfileBtn1.addEventListener('click', function () {
+    // Optional save logic here
+    restoreMainView();
   });
 
-  // Save button for Account Settings
-  saveEditProfileBtn1.addEventListener('click', function () {
-    // Add any save logic here if needed
-    accountSettingsContent.style.display = "none";
-    navbar.style.display = "flex"; // Show the navbar again
+  // Event listeners for Cancel and Save buttons in Edit Profile
+  cancelEditProfileBtn.addEventListener('click', restoreMainView);
+  saveEditProfileBtn.addEventListener('click', function () {
+    // Optional save logic here
+    restoreMainView();
   });
 });
+
