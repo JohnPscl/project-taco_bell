@@ -22,6 +22,10 @@
 
   /* Bottom - Username */
   --old-lace: #fff5e7;
+  html {
+    scroll-behavior: smooth;
+  }
+  
 }
 body {
   background-color: var(--peach-puff);
@@ -199,7 +203,7 @@ body.dark {
 
 /* Search Bar 2 */
 
-.main-content {
+.main-content1 {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -211,12 +215,12 @@ body.dark {
   display: flex;
   align-items: center;
   justify-content: space-between; /* Spreads the search bar and settings */
-  width: 85%; /* Full width of the main content */
+  width:70%; /* Full width of the main content */
 }
 
 /* Search Bar Styling */
 .search-bar {
-  margin-left: 350px;
+  margin-left: 400px;
   width: 50%; /* Adjust width as needed */
   display: flex;
   align-items: center;
@@ -448,14 +452,16 @@ body.dark {
 /* CONTENT */
 
 /* Main content container */
-.content {
+.contentMain {
   margin-left: 270px;
   padding: 20px;
-  padding-top: 110px;
+  padding-top: 30px;
+  display: block;
 }
 
 /* Account heading */
 .page-heading {
+  margin-top: 15px;
   font-size: 24px;
   font-weight: bold;
   font-family: var(--ff-poppins);
@@ -475,8 +481,8 @@ body.dark {
 .dropdown-menu {
   display: none; /* Initially hidden */
   position: absolute;
-  margin-top: 210px; /* Positions dropdown below the three dots */
-  margin-right: 825px; /* Aligns dropdown to the right */
+  margin-top: 215px; /* Positions dropdown below the three dots */
+  margin-right: 815px; /* Aligns dropdown to the right */
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -539,7 +545,7 @@ body.dark {
   padding: 20px;
   border-radius: 8px;
   overflow: hidden; /* Ensures no scrollbars in the modal */
-  max-width: 53.9vw; /* Max width of the modal */
+  max-width: 53.7vw; /* Max width of the modal */
   max-height: 1200px; /* Max height of the modal */
   
 }
@@ -562,27 +568,13 @@ body.dark {
   border: none;
 
 }
-/* Container for the PDF */
-.pdf-container {
-  width: 100%; /* Make the container take up full width */
- 
-  overflow: hidden; /* Prevent scrollbars from appearing */
-  display: flex; /* Center iframe horizontally and vertically */
-  justify-content: center;
-  align-items: center;
-  background-color: #f4f4f4; /* Optional background color */
-  border-radius: 8px; /* Optional rounded corners */
-}
 
-/* PDF Iframe */
 .pdf-iframe {
   width: 100%; /* Set the iframe to take full width of the container */
   height: 100%; /* Set the iframe to take full height of the container */
   border: none; /* Remove the iframe border */
+  overflow: auto; /* Add scrollbar to the iframe */
 }
-
-
-
 
 /* Styling for scrollbar inside iframe */
 .modal-pdf::-webkit-scrollbar {
@@ -628,6 +620,10 @@ body.dark {
 
 .dropdown-menu1 ul li a:hover {
   background-color: #f1f1f1;
+}
+/* CSS to limit the scroll height of the section */
+.no-scroll {
+  overflow: auto;
 }
 
 

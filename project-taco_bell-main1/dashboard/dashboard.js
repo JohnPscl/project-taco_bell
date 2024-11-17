@@ -116,6 +116,84 @@ clearSearchButton.addEventListener('click', () => {
 });
 
 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const editProfileLink = document.getElementById('editProfileLink');
+  const editProfileSection = document.getElementById('editProfileSection');
+  const accountSettingLink = document.getElementById('accountSettingLink');
+  const accountSettingsContent = document.getElementById('accountSettingsContent');
+  const navbar = document.querySelector(".navbar");
+  const contentMain = document.querySelector(".contentMain");
+
+  // Cancel and Save buttons
+  const cancelEditProfileBtn1 = document.getElementById('cancelEditProfile1');
+  const saveEditProfileBtn1 = document.getElementById('saveEditProfile1');
+  const cancelEditProfileBtn = document.getElementById('cancelEditProfile');
+  const saveEditProfileBtn = document.getElementById('saveEditProfile');
+
+  // Show a specific section and hide everything else
+  function toggleSection(sectionToShow) {
+    // Hide all sections and navbar
+    editProfileSection.style.display = "none";
+    accountSettingsContent.style.display = "none";
+    navbar.style.visibility = "hidden"; // Use visibility instead of display to retain layout
+    contentMain.style.display = "none"; // Hide contentMain completely
+
+    // Prevent scrolling
+    document.body.classList.add('no-scroll');
+
+    // Show only the specified section
+    if (sectionToShow === "editProfile") {
+      editProfileSection.style.display = "block";
+    } else if (sectionToShow === "accountSettings") {
+      accountSettingsContent.style.display = "block";
+    }
+  }
+
+  // Return to the main view with all original elements restored
+  function restoreMainView() {
+    // Hide all sections
+    editProfileSection.style.display = "none";
+    accountSettingsContent.style.display = "none";
+
+    // Restore navbar and main content visibility
+    navbar.style.visibility = "visible";
+    contentMain.style.display = "block"; // Show contentMain again
+
+    // Enable scrolling
+    document.body.classList.remove('no-scroll');
+  }
+
+  // Event listeners for navigating between sections
+  editProfileLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    toggleSection("editProfile");
+  });
+
+  accountSettingLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    toggleSection("accountSettings");
+  });
+
+  // Event listeners for Cancel and Save buttons in Edit Profile
+  cancelEditProfileBtn.addEventListener('click', restoreMainView);
+  saveEditProfileBtn.addEventListener('click', function () {
+    // Optional save logic here
+    restoreMainView();
+  });
+
+  // Event listeners for Cancel and Save buttons in Account Settings
+  cancelEditProfileBtn1.addEventListener('click', restoreMainView);
+  saveEditProfileBtn1.addEventListener('click', function () {
+    // Optional save logic here
+    restoreMainView();
+  });
+});
+
+
+
+
 // Function to toggle the visibility of the dropdown menu
 function toggleMenu(event) {
   event.stopPropagation(); // Prevent click from bubbling to the document

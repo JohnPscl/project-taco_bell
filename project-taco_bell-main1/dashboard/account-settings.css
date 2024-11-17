@@ -1,6 +1,4 @@
-
-
-
+/* Main content container */
 .content {
     margin-left: 270px;
     padding: 20px;
@@ -49,7 +47,7 @@
     height: 330px;
     background-color: #f6ebdb;
     border: 1px solid #b3b3b3;
-    margin-top: 50px;
+    margin-top: 10px;
     border-radius: 8px;
     padding: 20px;
     box-sizing: border-box;
@@ -60,7 +58,7 @@
 /* Account Title Styling */
 .account-title {
     font-size: 24px;
-    font-weight: bold;
+    font-weight: normal;
     font-family: var(--ff-poppins);
     color: #343232;
     margin-bottom: 5px;
@@ -126,4 +124,10 @@
     font-size: 25px;
     color: #343232;
     margin-right: 15px; /* Adjust margin for consistent spacing */
+}
+.modal-buttons1 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0px;
+    margin-top: 40px;
 }

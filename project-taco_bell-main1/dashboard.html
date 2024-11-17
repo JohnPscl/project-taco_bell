@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="dashboard/dashboard.css" />
     <link rel="stylesheet" href="dashboard/modal.css" />
+    <link rel="stylesheet" href="dashboard/account-settings.css" />
+    <link rel="stylesheet" href="dashboard/editprofile.css" />
 
     
   </head>
@@ -19,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar">
 
-      <div class="main-content">
+      <div class="main-content1">
         <div class="search-container">
           <div class="search-bar">
             <input type="text" placeholder="Search...">
@@ -76,8 +78,8 @@
                       <i class="bx bx-chevron-right arrow-left"></i>
                   </div>
                   <ul class="menu_items submenu">
-                      <li><a href="personal-info.html" class="nav_link sublink" onclick="loadContent('personalInfo.html')">Personal Info</a></li>
-                      <li><a href="account-settings.html" class="nav_link sublink" onclick="loadContent('accountSettings.html')">Account Settings</a></li>
+                    <a href="#EditProfile" class="nav_link sublink" id="editProfileLink">Edit Profile</a>
+                    <a href="#AccountSetting" class="nav_link sublink" id="accountSettingLink">Account Setting</a>
                   </ul>
               </li>
           </ul>
@@ -314,10 +316,155 @@
 
 
 
+   <!-- Edit Profile Section -->
+   <div class="main-content">
+    <div id="editProfileSection" class="edit-profile-section" style="display: none;">
+      <h1>Personal Information</h1>
+      <br>
+      <hr>
+      
+      <h2 class="page-title">Your Information</h2>
+      <p class="page-tagline">Review and update your information to enhance your experience</p>
+  
+      <div class="profile-edit-container1">
+        <div class="form-fields-container1">
+          <div class="profile-picture-section1">
+            <div class="profile-picture-preview1">
+                <img id="profileImagePreview" src="dashboard/Icons/user.png" class="profilepic1" alt="Profile Preview" />
+                <label for="profilePicture" class="image-hover-label">Change Image</label>
+            </div>
+            <div class="upload-container">
+                <input type="file" id="profilePicture" accept="image/*" onchange="previewImage(event)" class="upload-input" disabled />
+            </div>
+        </div>
+        
+        
+        
+        
+            <div class="form-fields1">
+                <div class="modal-field1 input-group1">
+                    <label for="username" class="modal-label1">Username</label>
+                    <input type="text" id="username" class="modal-input1" disabled />
+                </div>
+                <div class="modal-field1 input-group2">
+                    <label for="professor" class="modal-label1">Professor</label>
+                    <input type="text" id="professor" class="modal-input1" disabled />
+                </div>
+                <div class="modal-field1 input-group3">
+                    <label for="department1" class="modal-label1">Department</label>
+                    <input type="text" id="department1" class="modal-input1" disabled />
+                </div>
+            </div>
+            
+            <!-- Edit Button -->
+            <button id="editButton1" onclick="toggleEditing1()">Edit</button>
+        </div>
+    </div>
+    
+    
+    
+    <div class="profile-container">
+      <div class="profile-header">
+        <h2>Profile Details</h2>
+        <button id="editButton" onclick="toggleEditing()">Edit</button>
+      </div>
+    
+      <div class="form-row2">
+        <div class="modal-field2">
+          <label for="firstName" class="modal-label2">First Name</label>
+          <input type="text" id="firstName" class="modal-input2" disabled />
+        </div>
+        <div class="modal-field2">
+          <label for="lastName" class="modal-label2">Last Name</label>
+          <input type="text" id="lastName" class="modal-input2" disabled />
+        </div>
+        <div class="modal-field2">
+          <label class="modal-label2">Gender</label>
+          <div class="gender-options hidden"> <!-- Initially hidden -->
+            <label><input type="radio" name="gender" value="Male" disabled> Male</label>
+            <label><input type="radio" name="gender" value="Female" disabled> Female</label>
+            <label><input type="radio" name="gender" value="Not Specified" disabled> Not Specified</label>
+          </div>
+          <div id="selectedGender" class="selected-gender" style="display: none;"></div> <!-- For displaying selected gender -->
+        </div>
+      </div>
+    
+      <div class="form-row2">
+        <div class="modal-field2">
+          <label for="email" class="modal-label2">Email Address</label>
+          <input type="email" id="email" class="modal-input2" disabled />
+        </div>
+        <div class="modal-field2">
+          <label for="facultyID" class="modal-label2">Faculty ID</label>
+          <input type="text" id="facultyID" class="modal-input2" disabled />
+        </div>
+        <div class="modal-field2">
+          <label for="phone" class="modal-label2">Phone</label>
+          <input type="tel" id="phone" class="modal-input2" disabled />
+        </div>
+      </div>
+    
+      <div class="form-row3">
+        <div class="modal-field2">
+          <label for="department" class="modal-label2">Department</label>
+          <input type="text" id="department" class="modal-input2" disabled />
+        </div>
+        <div class="modal-field2">
+          <label for="title" class="modal-label2">Title</label>
+          <input type="text" id="title" class="modal-input2" disabled />
+        </div>
+      </div>
+    
+      <div id="message" class="message"></div>
+    </div>
+    
+      
+      <!-- Save and Cancel Buttons -->
+      <div class="modal-buttons">
+        <button id="cancelEditProfile" class="cancel-btn">Cancel</button>
+        <button id="saveEditProfile" class="modal-btn">Save Changes</button>
+    </div>
+</div>
+</div>
+
+
+<div class="content" id="accountSettingsContent" style="display: none;">
+  <h1 class="page-heading">Account Settings</h1>
+  <hr class="divider">
+  <!-- Additional content goes here -->
+  <h2 class="page-title">Security</h2>
+  <p class="page-tagline">Recommendations to enhance the security of your account</p>
+  <div class="big-rectangle">
+      <div class="account-title">Signing In</div>
+      <div class="account-description">Keep your access to your account seamless by regularly updating this information.</div>
+      <div class="account-buttons">
+          <div class="account-button">
+              <span>Email</span>
+              <span class="user-email">user@gmail.com</span>
+              <i class="bx bx-chevron-right arrow-left-2"></i>
+          </div>
+          <div class="account-button">
+              <span>Password</span>
+              <span class="user-password">****************</span>
+              <i class="bx bx-chevron-right arrow-left-2"></i>
+          </div>
+          <div class="account-button">
+              <span>Faculty ID</span>
+              <span class="user-id">123456</span>
+              <i class="bx bx-chevron-right arrow-left-2"></i>
+          </div>
+      </div>
+      <div class="modal-buttons1">
+        <button id="cancelEditProfile1" class="cancel-btn">Cancel</button>
+        <button id="saveEditProfile1" class="modal-btn">Save Changes</button>
+    </div>
+  </div>
+</div>
+
 
 <!-- Content Section -->
-  <div class="content">
-    <h1 class="page-heading">Welcome, Ysa</h1>
+  <div class="contentMain" id="contentMain" >
+    <h1 class="page-heading" >Welcome, Ysa</h1>
     <hr class="divider">
 
     <div class="card-container">
@@ -336,10 +483,13 @@
       <!-- Additional Cards -->
     </div>
   </div>
+  
   <!-- Dropdown Menu (Initially hidden) -->
 <div class="dropdown-menu" id="dropdown-menu" style="display: none;">
   <ul>
-    <li><a href="#">Download</a></li>
+    <li><a href="#">File Information</a></li>
+    <li><a href="#">Add to Favorites</a></li>
+    <li><a href="#">Move to Trash</a></li>
     <li><a href="#">Rename</a></li>
     <li><a href="#">Delete</a></li>
   </ul>
@@ -374,6 +524,7 @@
 <script src="dashboard/dashboard.js"></script>
 <script src="dashboard/modal.js"></script>
 <script src="dashboard/account-settings.js"></script>
+<script src="dashboard/editprofile.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
