@@ -316,67 +316,49 @@
 
 
 <!-- Content Section -->
+<!-- Content Section -->
 <div class="content">
   <h1 class="page-heading">Welcome, Ysa</h1>
   <hr class="divider">
 
   <div class="card-container">
-    
-    <div class="card">
+     
+    <!-- Card 1 -->
+    <div class="card" data-pdf-src="dashboard/Icons/Certificate.pdf" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc)">
       <div class="card-header">
-        <h3 class="card-title">File Name</h3>
+        <i class="fas fa-file file-icon"></i>
+        <h3 class="card-title">IOT CONFERENCE</h3>
+        <i class="fas fa-ellipsis-v three-dots"></i>
       </div>
-      <embed src="dashboard/Icons/Certificate.pdf" type="application/pdf" class="pdf-iframe">
+      <div class="pdf-container">
+        <iframe src="dashboard/Icons/Certificate.pdf#toolbar=0" type="application/pdf" class="pdf-iframe"></iframe>
+      </div>
     </div>
 
-    <div class="card">
+    <!-- Card 2 -->
+    <div class="card" data-pdf-src="dashboard/Icons/Regaspe_Quiz.pdf" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc)">
       <div class="card-header">
-        <h3 class="card-title">File Name</h3>
+        <i class="fas fa-file file-icon"></i>
+        <h3 class="card-title">REGASPE QUIZ</h3>
+        <i class="fas fa-ellipsis-v three-dots"></i>
       </div>
-      <embed src="dashboard/Icons/Certificate.pdf" type="application/pdf" class="pdf-iframe">
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">File Name</h3>
+      <div class="pdf-container">
+        <iframe src="dashboard/Icons/Regaspe_Quiz.pdf#toolbar=0" type="application/pdf" class="pdf-iframe"></iframe>
       </div>
-      <embed src="dashboard/Icons/Certificate.pdf" type="application/pdf" class="pdf-iframe">
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">File Name</h3>
-      </div>
-      <embed src="dashboard/Icons/Certificate.pdf" type="application/pdf" class="pdf-iframe">
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">File Name</h3>
-      </div>
-      <embed src="dashboard/Icons/Certificate.pdf" type="application/pdf" class="pdf-iframe">
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">File Name</h3>
-      </div>
-      <embed src="dashboard/Icons/Regaspe_Quiz.pdf" type="application/pdf" class="pdf-iframe">
-    </div>
-
 
   </div>
-
 </div>
 
 
-  
 
 
 <!-- JavaScript Files -->
 <script src="dashboard/dashboard.js"></script>
 <script src="dashboard/modal.js"></script>
 <script src="dashboard/account-settings.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
 
     

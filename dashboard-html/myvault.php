@@ -53,19 +53,19 @@
       <div class="menu_content">
           <ul class="menu_items">
               <li class="item">
-                  <a href="dashboard.php" class="nav_link" onclick="loadContent('myVault.php')">
+                  <a href="dashboard.html" class="nav_link" onclick="loadContent('myVault.html')">
                       <span class="navlink_icon"><i class="bx bx-home-alt"></i></span>
                       <span class="navlink">My Vault</span>
                   </a>
               </li>
               <li class="item">
-                  <a href="#" class="nav_link" onclick="loadContent('favorites.php')">
+                  <a href="#" class="nav_link" onclick="loadContent('favorites.html')">
                       <span class="navlink_icon"><i class="bx bx-star"></i></span>
                       <span class="navlink">Favorites</span>
                   </a>
               </li>
               <li class="item">
-                  <a href="#" class="nav_link" onclick="loadContent('trash.php')">
+                  <a href="#" class="nav_link" onclick="loadContent('trash.html')">
                       <span class="navlink_icon"><i class="bx bx-trash"></i></span>
                       <span class="navlink">Trash</span>
                   </a>
@@ -77,8 +77,8 @@
                       <i class="bx bx-chevron-right arrow-left"></i>
                   </div>
                   <ul class="menu_items submenu">
-                      <li><a href="personal-info.php" class="nav_link sublink" onclick="loadContent('personalInfo.php')">Personal Info</a></li>
-                      <li><a href="account-settings.php" class="nav_link sublink" onclick="loadContent('accountSettings.php')">Account Settings</a></li>
+                      <li><a href="personal-info.html" class="nav_link sublink" onclick="loadContent('personalInfo.html')">Personal Info</a></li>
+                      <li><a href="account-settings.html" class="nav_link sublink" onclick="loadContent('accountSettings.html')">Account Settings</a></li>
                   </ul>
               </li>
           </ul>

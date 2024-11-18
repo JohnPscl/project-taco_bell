@@ -43,7 +43,8 @@
                 </form>
                 <!-- Create New Account Section -->
                 <div class="create">
-                    <a href="signin.php">Sign in with password</a>
+                    <a href="signin.php">
+                        Sign in with password</a>
                 </div>
             </div>
         </div>

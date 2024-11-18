@@ -1,6 +1,3 @@
-
-
-
 .content {
     margin-left: 270px;
     padding: 20px;
@@ -71,11 +68,13 @@
     font-size: 16px;
     font-family: var(--ff-poppins);
     color: #343232;
+    margin-bottom: 30px;
 }
 
 /* Buttons Container */
 .account-buttons {
-    margin-top: 30px;
+    margin: 0; /* Remove top margin */
+    padding: 0; /* Remove any internal padding */
 }
 
 /* Button Style */
@@ -83,10 +82,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 18px;
     border-bottom: 1px solid #ccc;
     cursor: pointer;
     width: 100%;
+    background-color: transparent;
+    margin: 0; /* Remove margin between buttons */
 }
 
 /* Hover Effect */
@@ -94,9 +95,12 @@
     background-color: #fff6e8;
 }
 
+/* Label style */
 .account-label {
     font-size: 14px !important;
     color: #6d6d6c !important;
+    flex: 1;  /* Ensures the label takes up the left space */
+    text-align: left; /* Align text to the left */
 }
 
 /* Remove border from the last button */
@@ -109,6 +113,7 @@
     font-size: 16px;
     color: #343232;
     flex: 1.5; /* Allows this to take up the space on the left */
+    text-align: left; /* Ensure the label aligns to the left */
 }
 
 /* User information alignment */

@@ -57,7 +57,8 @@ removeFileBtn.addEventListener('click', function() {
   removeFileBtn.style.display = 'none'; // Hide the X button
 });
 
-// Open filter modal when filter button is clicked
+// START - MODAL FOR FILTER
+
 openFilter.addEventListener('click', () => {
   filterModal.style.display = 'flex'; // or 'block' depending on your CSS
 });
@@ -74,6 +75,7 @@ window.addEventListener('click', (event) => {
   }
 });
 
+//END - MODAL FOR FILTER
 
 document.addEventListener('DOMContentLoaded', () => {
   const openFilter = document.getElementById('openFilter'); // Assuming you have a button to open the filter modal
@@ -122,3 +124,88 @@ document.getElementById('fileCategory').addEventListener('focus', function() {
   this.style.position = 'relative';
   this.style.zIndex = '10';
 });
+
+
+
+// START - NEXT TAB FOR CARD
+
+function openModalOnAnotherPage(pdfSrc) {
+  const encodedSrc = encodeURIComponent(pdfSrc); // Encode the URL for safety
+  window.open(`view-modal.html?pdfSrc=${encodedSrc}`, '_blank'); // Open in a new tab
+}
+
+//END - NEXT TAB FOR CARD
+
+
+
+
+//START - CHANGE COLOR OF CARDS
+
+// Ensure this script runs after the DOM is fully loaded, to avoid targeting elements before they are ready
+document.addEventListener('DOMContentLoaded', function () {
+  const card = document.getElementById('myCard'); // Target the card element
+
+  // Single click event to change the color
+  card.addEventListener('click', function () {
+    // Add a class to change the background color
+    card.classList.add('clicked');
+  });
+});
+
+// Get all the cards
+const cards = document.querySelectorAll('.card');
+
+// Loop through each card and add the click event
+cards.forEach(card => {
+  card.addEventListener('click', (event) => {
+    // Prevent the document click handler from firing when a card is clicked
+    event.stopPropagation();
+    
+    // Remove 'clicked' class from all cards
+    cards.forEach(card => {
+      card.classList.remove('clicked');
+    });
+    
+    // Add 'clicked' class to the clicked card
+    card.classList.add('clicked');
+  });
+});
+
+// Event listener for clicking anywhere on the document
+document.addEventListener('click', () => {
+  // Remove 'clicked' class from all cards when clicking anywhere on the page
+  cards.forEach(card => {
+    card.classList.remove('clicked');
+  });
+});
+
+//END - CHANGE COLOR OF CARDS
+
+
+
+
+
+// START - CHANGE PASSWORD
+const passwordButton = document.getElementById('passwordButton');
+const modalPassword = document.getElementById('modalPassword');
+const closeBtnPassword = document.querySelector('.close-btn-password'); // Close button for the password modal
+
+// Open password modal when the password button is clicked
+passwordButton.addEventListener('click', () => {
+  modalPassword.style.display = 'flex'; // or 'block' depending on your CSS
+});
+
+// Close the password modal when the close button (X) is clicked
+closeBtnPassword.addEventListener('click', () => {
+  modalPassword.style.display = 'none';
+});
+
+// Optionally, close the modal if clicked outside the modal content
+window.addEventListener('click', (event) => {
+  if (event.target === modalPassword) {
+    modalPassword.style.display = 'none';
+  }
+});
+
+//END - CHANGE PASSWORD
+
