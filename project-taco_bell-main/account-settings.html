@@ -15,7 +15,7 @@
 
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" style="display: none;">
       <div class="logo_item">
         <img src="Assets/Logo/engineering logo.ico" id="sidebarOpen alt="">Faculty Vault
       </div>
@@ -29,6 +29,9 @@
 
     <!-- Sidebar -->
     <nav class="sidebar">
+      <div class="logo_item">
+        <img src="Assets/Logo/engineering logo.ico" id="sidebarOpen alt="">Faculty Vault
+      </div>
       <div>
         <a href="#" class="btn-link">
           <button class="new-btn" id="openNewModal">
@@ -259,25 +262,48 @@
         <div class="account-description">Keep your access to your account seamless by regularly updating this information.</div>
 
         <!-- Buttons -->
+        <!-- Account Buttons -->
         <div class="account-buttons">
-            <div class="account-button">
-                <span class="account-label">Email</span>
-                <span class="user-email">user@gmail.com</span>
-                <i class="bx bx-chevron-right arrow-left-2"></i>
-            </div>
-            <div class="account-button">
-                <span class="account-label">Password</span>
-                <span class="user-password">****************</span>
-                <i class="bx bx-chevron-right arrow-left-2"></i>
-            </div>
-            <div class="account-button">
-                <span class="account-label">Faculty ID</span>
-                <span class="user-id">123456</span>
-                <i class="bx bx-chevron-right arrow-left-2"></i>
-            </div>
-        </div>
+
+          <button class="account-button" id="emailButton">
+          <span class="account-label">Email</span>
+          <span class="user-email">user@gmail.com</span>
+          <i class="bx bx-chevron-right arrow-left-2"></i>
+          </button>
+
+          <button class="account-button" id="passwordButton">
+          <span class="account-label">Password</span>
+          <span class="user-password">****************</span>
+          <i class="bx bx-chevron-right arrow-left-2"></i>
+          </button>
+
+          <button class="account-button" id="facultyIdButton">
+          <span class="account-label">Faculty ID</span>
+          <span class="user-id">123456</span>
+          <i class="bx bx-chevron-right arrow-left-2"></i>
+          </button>
+
+</div>
+
         
     </div>
+</div>
+
+<!-- Password Modal -->
+<div id="modalPassword" class="modal-password" style="display: none;">
+  <div class="modal-password-content">
+    <span class="close-btn-password">&times;</span>
+    <h2>Change Password</h2>
+    <form>
+      <label for="currentPassword">Current Password:</label>
+      <input type="password" id="currentPassword" placeholder="Enter current password" required>
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" placeholder="Enter new password" required>
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
 </div>
 
 

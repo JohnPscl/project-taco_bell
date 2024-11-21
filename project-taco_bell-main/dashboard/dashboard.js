@@ -10,14 +10,7 @@ const submenuItems = document.querySelectorAll(".submenu_item");
 // You can directly ensure the sidebar is always open
 sidebar.classList.remove("close");
 
-darkLight.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    darkLight.classList.replace("bx-sun", "bx-moon");
-  } else {
-    darkLight.classList.replace("bx-moon", "bx-sun");
-  }
-});
+
 
 submenuItems.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -122,27 +115,28 @@ clearSearchButton.addEventListener('click', () => {
   clearSearchButton.style.display = 'none'; // Hide the "X" button
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const editProfileLink = document.getElementById('editProfileLink');
   const editProfileSection = document.getElementById('editProfileSection');
   const accountSettingLink = document.getElementById('accountSettingLink');
   const accountSettingsContent = document.getElementById('accountSettingsContent');
   const navbar = document.querySelector(".navbar");
+  const contentMain = document.querySelector(".contentMain");
 
-  // Cancel and Save buttons
-  const cancelEditProfileBtn1 = document.getElementById('cancelEditProfile1');
-  const saveEditProfileBtn1 = document.getElementById('saveEditProfile1');
-  const cancelEditProfileBtn = document.getElementById('cancelEditProfile');
-  const saveEditProfileBtn = document.getElementById('saveEditProfile');
+ 
 
-  // Show section and hide navbar
+  // Show a specific section and hide everything else
   function toggleSection(sectionToShow) {
+    // Hide all sections and navbar
     editProfileSection.style.display = "none";
     accountSettingsContent.style.display = "none";
-    navbar.style.display = "none";
-    
-    // Show the selected section
+    navbar.style.visibility = "hidden"; // Use visibility instead of display to retain layout
+    contentMain.style.display = "none"; // Hide contentMain completely
+
+    // Prevent scrolling
+    document.body.classList.add('no-scroll');
+
+    // Show only the specified section
     if (sectionToShow === "editProfile") {
       editProfileSection.style.display = "block";
     } else if (sectionToShow === "accountSettings") {
@@ -150,14 +144,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Return to main view with navbar visible
+  // Return to the main view with all original elements restored
   function restoreMainView() {
+    // Hide all sections
     editProfileSection.style.display = "none";
     accountSettingsContent.style.display = "none";
-    navbar.style.display = "flex"; // Show the navbar again
+
+    // Restore navbar and main content visibility
+    navbar.style.visibility = "visible";
+    contentMain.style.display = "block"; // Show contentMain again
+
+    // Enable scrolling
+    document.body.classList.remove('no-scroll');
   }
 
-  // Event listeners for showing sections
+  // Event listeners for navigating between sections
   editProfileLink.addEventListener('click', function (event) {
     event.preventDefault();
     toggleSection("editProfile");
@@ -167,19 +168,110 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     toggleSection("accountSettings");
   });
-
-  // Event listeners for Cancel and Save buttons in Account Settings
-  cancelEditProfileBtn1.addEventListener('click', restoreMainView);
-  saveEditProfileBtn1.addEventListener('click', function () {
-    // Optional save logic here
-    restoreMainView();
-  });
-
-  // Event listeners for Cancel and Save buttons in Edit Profile
-  cancelEditProfileBtn.addEventListener('click', restoreMainView);
-  saveEditProfileBtn.addEventListener('click', function () {
-    // Optional save logic here
-    restoreMainView();
-  });
 });
 
+
+
+
+
+
+// Function to toggle the visibility of the dropdown menu
+function toggleMenu(event) {
+  event.stopPropagation(); // Para hindi mawala ang menu kapag pinindot sa ibang lugar.
+  
+  // Hanapin ang parent ng element na may tatlong tuldok
+  const card = event.target.closest(".card");
+  
+  // Hanapin ang dropdown menu sa loob ng card
+  let dropdownMenu = card.querySelector(".dropdown-menu");
+
+  // Kung hindi pa naka-attach ang dropdown sa tamang lugar, ilagay ito
+  if (!dropdownMenu) {
+    dropdownMenu = document.getElementById("dropdown-menu").cloneNode(true);
+    card.appendChild(dropdownMenu);
+    dropdownMenu.classList.add("active"); // Magdagdag ng visible class
+  } else {
+    dropdownMenu.classList.toggle("active");
+  }
+}
+
+// Mag-add ng listener para isara ang menu kapag nag-click sa ibang lugar
+document.addEventListener("click", () => {
+  const activeMenus = document.querySelectorAll(".dropdown-menu.active");
+  activeMenus.forEach((menu) => menu.classList.remove("active"));
+});
+
+
+
+
+
+
+
+
+
+// Counter to keep track of the card numbers
+
+
+saveNewItem.addEventListener('click', () => {
+  // Get values from input fields
+  const fileInputElement = document.getElementById('fileInput').files[0];
+  const fileName = document.getElementById('fileLocation').value || "Untitled"; // Default title
+  const cardContainer = document.getElementById('card-container'); // Target the container
+
+  // Check if file input is provided
+  if (!fileInputElement) {
+    alert('Please upload a file before saving.');
+    return;
+  }
+
+  // Generate a temporary URL for the uploaded file
+  const fileURL = URL.createObjectURL(fileInputElement); // Temporary URL
+
+  // Create a new card element
+  const newCard = document.createElement('div');
+  newCard.classList.add('card');
+
+  // Add content to the new card
+  newCard.innerHTML = `
+  
+    <div class="card-header">
+      <i class="fas fa-file file-icon"></i>
+      <h3 class="card-title">${fileName.toUpperCase()}</h3>
+      <a class="fas fa-ellipsis-v three-dots" onclick="toggleMenu(event)"></a>
+    </div>
+    <div class="pdf-container">
+      <iframe src="${fileURL}" type="application/pdf" class="pdf-iframe"></iframe>
+    </div>
+    <div class="dropdown-container">
+      <div class="dropdown-menu" id="dropdown-menu">
+        <ul>
+          <li><a href="#">File Information</a></li>
+          <li><a href="#">Add to Favorites</a></li>
+          <li><a href="#">Move to Trash</a></li>
+          <li><a href="#">Rename</a></li>
+          <li><a href="#">Delete</a></li>
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Append the new card to the card container
+  cardContainer.appendChild(newCard);
+
+  // Reset the modal fields
+  document.getElementById('fileInput').value = ''; // Clear file input
+  document.getElementById('fileLocation').value = ''; // Clear location input
+
+  // Close the modal
+  document.getElementById('newModal').style.display = 'none';
+});
+
+function updateCardCounter() {
+  const cardCounter = document.getElementById('card-counter');
+  const totalCards = document.querySelectorAll('.card-container .card').length; // Bilangin ang lahat ng cards
+
+}
+
+// Tawagin ang updateCardCounter function pagkatapos mag-save ng card
+cardContainer.appendChild(newCard);
+updateCardCounter();

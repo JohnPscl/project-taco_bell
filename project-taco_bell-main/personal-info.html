@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="dashboard/dashboard.css" />
     <link rel="stylesheet" href="dashboard/modal.css" />
     <link rel="stylesheet" href="dashboard/account-settings.css" />
+    <link rel="stylesheet" href="dashboard/personal-info.css" />
+    
   </head>
   <body>
 
+
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" style="display: none;">
       <div class="logo_item">
         <img src="Assets/Logo/engineering logo.ico" id="sidebarOpen alt="">Faculty Vault
       </div>
@@ -28,6 +31,9 @@
 
     <!-- Sidebar -->
     <nav class="sidebar">
+      <div class="logo_item">
+        <img src="Assets/Logo/engineering logo.ico" id="sidebarOpen alt="">Faculty Vault
+      </div>
       <div>
         <a href="#" class="btn-link">
           <button class="new-btn" id="openNewModal">
@@ -66,8 +72,8 @@
               <i class="bx bx-chevron-right arrow-left"></i>
             </div>
             <ul class="menu_items submenu">
-                <li><a href="#" class="nav_link sublink">Personal Info</a></li>
-                <li><a href="account-settings.html" class="nav_link sublink">Account Settings</a></li>
+              <li><a href="" class="nav_link sublink">Personal Info</a></li>
+              <li><a href="account-settings.html" class="nav_link sublink">Account Settings</a></li>
             </ul>
           </li>
 
@@ -245,19 +251,28 @@
 <!-- CONTENT -->
 
 <div class="content">
-    <h1 class="page-heading">Personal Info</h1>
-    <hr class="divider">
-    <!-- Additional content goes here -->
+  <h1 class="page-heading">Personal Info</h1>
+  <hr class="divider">
+  <!-- Additional content goes here -->
 
-    <h2 class="page-title">Your Information</h2>
-    <p class="page-tagline">Review and update your information to enhance your experience</p>
+  <h2 class="page-title">Your Information</h2>
+  <p class="page-tagline">Review and update your information to enhance your experience</p>
 
-    <!-- Rectangle -->
-    <div class="big-rectangle">
-        
-
+  <!-- Rectangle -->
+  <div class="big-rectangle rectangle-info1">
+    <div class="info-user">
+      <img class="info-img" src="dashboard/Icons/user.png">
     </div>
+  
+  </div>
+   <!-- Rectangle -->
+   <div class="big-rectangle rectangle-info2">
+    
+   </div>
+
+
 </div>
+
 
   
 
@@ -266,5 +281,6 @@
     <!-- JavaScript Files -->
     <script src="dashboard/dashboard.js"></script>
     <script src="dashboard/modal.js"></script>
+
   </body>
 </html>
