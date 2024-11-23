@@ -489,9 +489,10 @@ button {
 
 /* Container for the card */
 .card-container {
+  margin-left: 50px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 50px;
   padding: 20px;
   justify-content: left;
 }
@@ -591,7 +592,9 @@ button {
   margin-left: 15px; /* Add some space between the icon and the title */
 }
 
-/* Three dots icon styling */
+
+/* Style for the three dots icon */
+/* Style for the three dots icon */
 .three-dots {
   font-size: 15px; /* Adjust the size of the three dots */
   margin-left: auto; /* Push it to the right */
@@ -599,23 +602,40 @@ button {
   cursor: pointer;
   color: #383838;
   transition: color 0.3s ease; /* Smooth color transition on hover */
+  cursor: pointer; /* Change the cursor to pointer when hovering */
+  display: flex; /* Center the dots inside the circle */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 30px; /* Circle width */
+  height: 30px; /* Circle height */
+  border-radius: 50%; /* Make the element perfectly circular */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  background-color: transparent; /* No background by default */
+  box-shadow: none; /* No shadow by default */
 }
 
+/* Hover effect for the three dots */
 .three-dots:hover {
-  color: #383838; /* Change color on hover */
+  background-color: var(--peach-puff); /* Darker background color on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.dropdown-menu.active {
+  display: block; /* Show the dropdown when 'active' class is added */
 }
 
 /* Dropdown menu styling */
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 0; /* Align it to the top of the card */
-  right: 0; /* Align it to the right of the card */
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  border-radius: 5px;
+ 
+    display: none;
+    position: absolute;
+    top: 228px;
+    right: 800px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .dropdown-menu ul {

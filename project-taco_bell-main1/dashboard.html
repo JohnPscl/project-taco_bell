@@ -378,15 +378,6 @@
           <label for="lastName" class="modal-label2">Last Name</label>
           <input type="text" id="lastName" class="modal-input2" disabled />
         </div>
-        <div class="modal-field2">
-          <label class="modal-label2">Gender</label>
-          <div class="gender-options hidden"> <!-- Initially hidden -->
-            <label><input type="radio" name="gender" value="Male" disabled> Male</label>
-            <label><input type="radio" name="gender" value="Female" disabled> Female</label>
-            <label><input type="radio" name="gender" value="Not Specified" disabled> Not Specified</label>
-          </div>
-          <div id="selectedGender" class="selected-gender" style="display: none;"></div> <!-- For displaying selected gender -->
-        </div>
       </div>
     
       <div class="form-row2">
@@ -398,20 +389,12 @@
           <label for="facultyID" class="modal-label2">Faculty ID</label>
           <input type="text" id="facultyID" class="modal-input2" disabled />
         </div>
-        <div class="modal-field2">
-          <label for="phone" class="modal-label2">Phone</label>
-          <input type="tel" id="phone" class="modal-input2" disabled />
-        </div>
       </div>
     
       <div class="form-row3">
         <div class="modal-field2">
           <label for="department" class="modal-label2">Department</label>
           <input type="text" id="department" class="modal-input2" disabled />
-        </div>
-        <div class="modal-field2">
-          <label for="title" class="modal-label2">Title</label>
-          <input type="text" id="title" class="modal-input2" disabled />
         </div>
       </div>
     
@@ -420,15 +403,12 @@
     
       
       <!-- Save and Cancel Buttons -->
-      <div class="modal-buttons">
-        <button id="cancelEditProfile" class="cancel-btn">Cancel</button>
-        <button id="saveEditProfile" class="modal-btn">Save Changes</button>
-    </div>
+    
 </div>
 </div>
 
 
-<div class="content" id="accountSettingsContent" style="display: none;">
+<div class="accountcontent" id="accountSettingsContent" style="display: none;">
   <h1 class="page-heading">Account Settings</h1>
   <hr class="divider">
   <!-- Additional content goes here -->
@@ -454,66 +434,39 @@
               <i class="bx bx-chevron-right arrow-left-2"></i>
           </div>
       </div>
-      <div class="modal-buttons1">
-        <button id="cancelEditProfile1" class="cancel-btn">Cancel</button>
-        <button id="saveEditProfile1" class="modal-btn">Save Changes</button>
-    </div>
+    
   </div>
 </div>
-
 
 <!-- Content Section -->
-  <div class="contentMain" id="contentMain" >
-    <h1 class="page-heading" >Welcome, Ysa</h1>
-    <hr class="divider">
+<div class="contentMain" id="contentMain">
+  <h1 class="page-headingg">Welcome, Ysa</h1>
+  <hr class="divider">
 
-    <div class="card-container">
-      <!-- Card 1 -->
-      <div class="card" data-pdf-src="dashboard/Icons/Certificate.pdf#toolbar=0">
-        <div class="card-header">
-          <i class="fas fa-file file-icon"></i>
-          <h3 class="card-title">IOT CONFERENCE</h3>
-          <a class="fas fa-ellipsis-v three-dots" onclick="toggleMenu(event)"></a> 
+  <div class="card-container" id="card-container">
+     
+    <!-- Card 1 -->
+    <div class="card"  style="display: none;" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc) " >
+      <div class="card-header" data-pdf-src="">
+        <i class="fas fa-file file-icon"></i>
+        <h3 class="card-title"></h3>
+        <a class="fas fa-ellipsis-v three-dots"  onclick="toggleMenu(event)"></a>
+        <div class="dropdown-menu" id="dropdown-menu">
+          <ul>
+            <li><a href="#">File Information</a></li>
+            <li><a href="#">Add to Favorites</a></li>
+            <li><a href="#">Move to Trash</a></li>
+            <li><a href="#">Rename</a></li>
+            <li><a href="#">Delete</a></li>
+          </ul>
         </div>
-        <div class="pdf-container" >
-          <iframe src="dashboard/Icons/Certificate.pdf#toolbar=0" type="application/pdf" class="pdf-iframe"></iframe>
-        </div>
+      <div class="pdf-container">
+        <iframe src=".pdf#toolbar=0" type="application/pdf" class="pdf-iframe"></iframe>
       </div>
-      
-      <!-- Additional Cards -->
+      </div>
     </div>
+    
   </div>
-  
-  <!-- Dropdown Menu (Initially hidden) -->
-<div class="dropdown-menu" id="dropdown-menu" style="display: none;">
-  <ul>
-    <li><a href="#">File Information</a></li>
-    <li><a href="#">Add to Favorites</a></li>
-    <li><a href="#">Move to Trash</a></li>
-    <li><a href="#">Rename</a></li>
-    <li><a href="#">Delete</a></li>
-  </ul>
-</div>
-
-<!-- Modal Card for PDF -->
-<!-- Modal Card for PDF -->
-<div class="modal-card-overlay hidden-card" id="modal-card">
-  <div class="modal-card-content">
-    <span class="modal-card-close" id="modal-card-close">&times;</span>
-    <!-- Embed PDF in an iframe -->
-    <iframe id="modal-pdf" src="" class="modal-pdf"></iframe>
-  </div>
-</div>
-
-   
-
-<!-- Dropdown Menu (DATA-PDF-SRC)-->
-<div class="dropdown-menu1" id="dropdown-menu1" style="display: none;">
-  <ul>
-    <li><a href="#" onclick="openPdfInModal('path/to/your/file.pdf')">Download</a></li>
-    <li><a href="#">Rename</a></li>
-    <li><a href="#">Delete</a></li>
-  </ul>
 </div>
 
 

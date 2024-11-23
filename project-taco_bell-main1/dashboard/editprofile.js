@@ -43,57 +43,29 @@ function toggleEditMode() {
     profilePictureInput.disabled = !profilePictureInput.disabled;
 }
 
-// Modify toggleEditing function to call toggleEditMode
 function toggleEditing() {
     const editButton = document.getElementById('editButton');
-    const inputs = document.querySelectorAll('.modal-input2');
-    const genderOptions = document.querySelector('.gender-options');
-    const selectedGenderDiv = document.getElementById('selectedGender');
-    const message = document.getElementById('message');
-
-    const isEditing = editButton.textContent === 'Save';
+    const inputs = document.querySelectorAll('.modal-input2'); // Select all input fields
+    const isEditing = editButton.textContent === 'Save'; // Check if in editing mode
 
     if (isEditing) {
-        // Save data to local storage
+        // Save data
         inputs.forEach(input => {
-            localStorage.setItem(input.id, input.value);
-            input.disabled = true;
-            input.classList.remove('editing');
+            input.disabled = true; // Disable fields after saving
+            input.classList.remove('editing'); // Remove editing class
+            localStorage.setItem(input.id, input.value); // Store value in localStorage
         });
 
-        // Save selected gender
-        const selectedGender = genderOptions.querySelector('input[name="gender"]:checked');
-        if (selectedGender) {
-            selectedGenderDiv.textContent = selectedGender.value; // Display selected gender only
-            selectedGenderDiv.style.display = 'block';
-        } else {
-            selectedGenderDiv.style.display = 'none';
-        }
-
-        genderOptions.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.disabled = true; // Disable radio buttons
-        });
-        genderOptions.classList.add('hidden');
-
-        editButton.textContent = 'Edit';
+        editButton.textContent = 'Edit'; // Change button text to Edit
     } else {
-        // Enable input fields for editing
+        // Enable editing mode
         inputs.forEach(input => {
             input.value = localStorage.getItem(input.id) || ''; // Load saved value
-            input.disabled = false; // Enable input fields
-            input.classList.add('editing');
-            input.style.border = '1px solid #ccc';
+            input.disabled = false; // Enable fields for editing
+            input.classList.add('editing'); // Add editing class for styling
         });
 
-        // Clear previously selected gender
-        selectedGenderDiv.style.display = 'none'; // Hide selected gender display
-        genderOptions.classList.remove('hidden'); // Show gender options for editing
-        genderOptions.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.checked = false; // Clear radio selection
-            radio.disabled = false; // Enable radio buttons for editing
-        });
-
-        editButton.textContent = 'Save';
+        editButton.textContent = 'Save'; // Change button text to Save
     }
 }
 
@@ -149,10 +121,9 @@ function toggleEditing() {
     // Example for local storage:
     localStorage.setItem('firstName', firstName);
     localStorage.setItem('lastName', lastName);
-    localStorage.setItem('email', email);
-    localStorage.setItem('phone', phone);
+    localStorage.setItem('email', email)
     localStorage.setItem('department', department);
-    localStorage.setItem('title', title);
+   
 
     // Hide the edit profile section
     document.getElementById('editProfileSection').style.display = "none";

@@ -127,10 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const contentMain = document.querySelector(".contentMain");
 
   // Cancel and Save buttons
-  const cancelEditProfileBtn1 = document.getElementById('cancelEditProfile1');
-  const saveEditProfileBtn1 = document.getElementById('saveEditProfile1');
-  const cancelEditProfileBtn = document.getElementById('cancelEditProfile');
-  const saveEditProfileBtn = document.getElementById('saveEditProfile');
+ 
 
   // Show a specific section and hide everything else
   function toggleSection(sectionToShow) {
@@ -176,113 +173,175 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleSection("accountSettings");
   });
 
-  // Event listeners for Cancel and Save buttons in Edit Profile
-  cancelEditProfileBtn.addEventListener('click', restoreMainView);
-  saveEditProfileBtn.addEventListener('click', function () {
-    // Optional save logic here
-    restoreMainView();
-  });
-
-  // Event listeners for Cancel and Save buttons in Account Settings
-  cancelEditProfileBtn1.addEventListener('click', restoreMainView);
-  saveEditProfileBtn1.addEventListener('click', function () {
-    // Optional save logic here
-    restoreMainView();
-  });
 });
+
 
 
 
 
 // Function to toggle the visibility of the dropdown menu
 function toggleMenu(event) {
-  event.stopPropagation(); // Prevent click from bubbling to the document
+  event.stopPropagation(); // Para hindi mawala ang menu kapag pinindot sa ibang lugar.
+  
+  // Hanapin ang parent ng element na may tatlong tuldok
+  const card = event.target.closest(".card");
+  
+  // Hanapin ang dropdown menu sa loob ng card
+  let dropdownMenu = card.querySelector(".dropdown-menu");
 
-  const threeDots = event.target; // The clicked three dots icon
-  const card = threeDots.closest('.card'); // Find the card containing the three dots
-  const dropdownMenu = card.querySelector('.dropdown-menu'); // Find the dropdown inside the card
-
-  // Toggle the visibility of the dropdown menu (show/hide)
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+  // Kung hindi pa naka-attach ang dropdown sa tamang lugar, ilagay ito
+  if (!dropdownMenu) {
+    dropdownMenu = document.getElementById("dropdown-menu").cloneNode(true);
+    card.appendChild(dropdownMenu);
+    dropdownMenu.classList.add("active"); // Magdagdag ng visible class
+  } else {
+    dropdownMenu.classList.toggle("active");
+  }
 }
 
-// Hide dropdown on outside click
-document.addEventListener('click', function(event) {
-  // Close the dropdown if clicked outside
-  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-  dropdownMenus.forEach(dropdownMenu => {
-    if (!dropdownMenu.contains(event.target) && !event.target.matches('.three-dots')) {
-      dropdownMenu.style.display = 'none'; // Hide if the click was outside
-    }
-  });
+// Mag-add ng listener para isara ang menu kapag nag-click sa ibang lugar
+document.addEventListener("click", () => {
+  const activeMenus = document.querySelectorAll(".dropdown-menu.active");
+  activeMenus.forEach((menu) => menu.classList.remove("active"));
 });
 
 
-// Function to open the PDF in the modal
-function openPdfInModal(pdfPath) {
-  const modal = document.getElementById('modal-card');
-  const iframe = document.getElementById('modal-pdf');
 
-  // Set the src of the iframe to the selected PDF file
-  iframe.src = pdfPath;
 
-  // Show the modal
-  modal.style.display = 'flex'; // Center the modal content
-}
 
-// Function to close the modal
-function closeModal() {
-  const modal = document.getElementById('modal-card');
-  modal.style.display = 'none'; // Hide the modal
+// Get elements
+const openNewModal = document.getElementById('openNewModal');
+const newModal = document.getElementById('newModal');
+const closeBtnNew = document.querySelector('.close-btn-new'); // Updated selector
+const saveNewItem = document.getElementById('saveNewItem');
+const cancelNewItem = document.getElementById('cancelNewItem');
+const fileInput = document.getElementById('fileInput');
+const fileChosenText = document.querySelector('.file-chosen-text');
+const removeFileBtn = document.querySelector('.remove-file-btn'); // X button for removing the file
+const openFilter = document.getElementById('openFilter'); // Filter button
+const filterModal = document.querySelector('.modal-filter'); // Filter modal
+const closeFilterBtn = document.querySelector('.close-btn-filter'); // Close button for filter modal
+const cardContainer = document.getElementById('card-container'); // Target the card container
+const cardCounter = document.getElementById('card-counter'); // Element to display card count
 
-  // Reset the iframe src to clear the content when modal is closed
-  const iframe = document.getElementById('modal-pdf');
-  iframe.src = '';
-}
-
-// Event listener for closing the modal when clicking the close button
-document.getElementById('modal-card-close').addEventListener('click', closeModal);
-
-// Function to handle clicking the card and opening the modal with the PDF from data-pdf-src
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', function(event) {
-    // Ensure that the card click is not triggering the dropdown
-    if (event.target.matches('.three-dots')) return;
-
-    const pdfPath = card.getAttribute('data-pdf-src'); // Get the data-pdf-src attribute of the clicked card
-    if (pdfPath) {
-      openPdfInModal(pdfPath); // Open the PDF in the modal
-    }
-  });
+// Open new item modal
+openNewModal.addEventListener('click', () => {
+  newModal.style.display = 'flex'; // or 'block' depending on your CSS
 });
 
-// Close the modal when clicking the overlay (background)
-const modalOverlay = document.getElementById('modal-card');
-modalOverlay.addEventListener('click', function(event) {
-  // Check if the clicked target is the overlay itself (not the modal content)
-  if (event.target === modalOverlay) {
-    closeModal(); // Close the modal when clicking on the overlay
+// Close new item modal when 'X' button is clicked
+closeBtnNew.addEventListener('click', () => {
+  newModal.style.display = 'none';
+});
+
+// Save new item and close modal
+saveNewItem.addEventListener('click', () => {
+  // Get values from input fields
+  const fileInputElement = fileInput.files[0];
+  const fileName = document.getElementById('fileLocation').value || "Untitled"; // Default title
+
+  // Check if file input is provided
+  if (!fileInputElement) {
+    alert('Please upload a file before saving.');
+    return;
+  }
+
+  // Generate a temporary URL for the uploaded file
+  const fileURL = URL.createObjectURL(fileInputElement); // Temporary URL
+
+  // Create a new card element
+  const newCard = document.createElement('div');
+  newCard.classList.add('card');
+  newCard.setAttribute('data-pdf-src', fileURL); // Store PDF URL in card attribute
+
+  // Add content to the new card
+  newCard.innerHTML = `
+    <div class="card-header">
+      <i class="fas fa-file file-icon"></i>
+      <h3 class="card-title">${fileName.toUpperCase()}</h3>
+      <a class="fas fa-ellipsis-v three-dots" onclick="toggleMenu(event)"></a>
+    </div>
+    <div class="pdf-container">
+      <iframe src="${fileURL}" type="application/pdf" class="pdf-iframe"></iframe>
+    </div>
+    <div class="dropdown-container">
+      <div class="dropdown-menu" id="dropdown-menu">
+        <ul>
+          <li><a href="#">File Information</a></li>
+          <li><a href="#">Add to Favorites</a></li>
+          <li><a href="#">Move to Trash</a></li>
+          <li><a href="#">Rename</a></li>
+          <li><a href="#">Delete</a></li>
+        </ul>
+      </div>
+    </div>
+  `;
+
+  // Add click event to open the PDF in a new tab
+  newCard.addEventListener('click', () => {
+    const pdfSrc = newCard.getAttribute('data-pdf-src');
+    if (pdfSrc) {
+      window.open(pdfSrc, '_blank'); // Open the PDF in a new tab
+    }
+  });
+
+  // Append the new card to the card container
+  cardContainer.appendChild(newCard);
+
+  // Reset the modal fields
+  fileInput.value = ''; // Clear file input
+  document.getElementById('fileLocation').value = ''; // Clear location input
+
+  // Close the modal
+  newModal.style.display = 'none';
+
+  // Update card counter
+  updateCardCounter();
+});
+
+// Cancel new item and close modal
+cancelNewItem.addEventListener('click', () => {
+  newModal.style.display = 'none';
+});
+
+// Close new item modal when clicking outside the modal content
+window.addEventListener('click', (event) => {
+  if (event.target === newModal) {
+    newModal.style.display = 'none';
   }
 });
 
-// Separate toggle function for dropdown in the second menu (dropdown-menu1)
-function toggleMenu1(event) {
-  event.stopPropagation(); // Prevent click from bubbling to the document
+// File input change event
+fileInput.addEventListener('change', function() {
+  if (this.files.length > 0) {
+    fileChosenText.textContent = this.files[0].name; // Update the text with the chosen file name
+    removeFileBtn.style.display = 'inline'; // Show the X button
+  } else {
+    fileChosenText.textContent = 'No file chosen'; // Reset the text if no file is chosen
+    removeFileBtn.style.display = 'none'; // Hide the X button
+  }
+});
 
-  const threeDots = event.target; // The clicked three dots icon
-  const card = threeDots.closest('.card'); // Find the card containing the three dots
-  const dropdownMenu = card.querySelector('.dropdown-menu1'); // Find the dropdown inside the card
+// Event listener for removing the file
+removeFileBtn.addEventListener('click', function() {
+  fileInput.value = ''; // Clear the file input
+  fileChosenText.textContent = 'No file chosen'; // Reset text
+  removeFileBtn.style.display = 'none'; // Hide the X button
+});
 
-  // Toggle the visibility of the dropdown menu (show/hide)
-  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-}
+// Open filter modal when filter button is clicked
+openFilter.addEventListener('click', () => {
+  filterModal.style.display = 'flex'; // or 'block' depending on your CSS
+});
 
-// Hide dropdown on outside click for the second menu
-document.addEventListener('click', function(event) {
-  const dropdownMenus = document.querySelectorAll('.dropdown-menu1');
-  dropdownMenus.forEach(dropdownMenu => {
-    if (!dropdownMenu.contains(event.target) && !event.target.matches('.three-dots')) {
-      dropdownMenu.style.display = 'none'; // Hide if the click was outside
-    }
-  });
+// Close filter modal when 'X' button is clicked
+closeFilterBtn.addEventListener('click', () => {
+  filterModal.style.display = 'none';
+});
+
+// Close filter modal when clicking outside the modal content
+window.addEventListener('click', (event) => {
+  if (event.target === filterModal) {
+    filterModal.style.display = 'none';
+  }
 });
