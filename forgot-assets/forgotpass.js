@@ -72,6 +72,6 @@ signInLink.addEventListener('click', function (e) {
 
   // Wait for the animation to finish before redirecting
   setTimeout(() => {
-    window.location.href = 'signin.html'; // Redirect to the create account page
+    window.location.href = 'signin.php'; // Redirect to the create account page
   }, 500); // Match the duration of your fade-out animation
 });
