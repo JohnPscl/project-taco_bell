@@ -175,35 +175,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-
-
-
 // Function to toggle the visibility of the dropdown menu
 function toggleMenu(event) {
-  event.stopPropagation(); // Para hindi mawala ang menu kapag pinindot sa ibang lugar.
-  
-  // Hanapin ang parent ng element na may tatlong tuldok
+  event.stopPropagation(); // Prevent propagation to avoid unwanted closing
+
+  // Close any other active dropdowns before showing the current one
+  const activeMenus = document.querySelectorAll(".dropdown-menu.active");
+  activeMenus.forEach((menu) => {
+    if (menu !== event.target.closest(".card").querySelector(".dropdown-menu")) {
+      menu.classList.remove("active");
+    }
+  });
+
+  // Find the card element containing the clicked three dots
   const card = event.target.closest(".card");
-  
-  // Hanapin ang dropdown menu sa loob ng card
+
+  // Look for the dropdown menu inside the card
   let dropdownMenu = card.querySelector(".dropdown-menu");
 
-  // Kung hindi pa naka-attach ang dropdown sa tamang lugar, ilagay ito
+  // If no dropdown exists, create a new one dynamically
   if (!dropdownMenu) {
-    dropdownMenu = document.getElementById("dropdown-menu").cloneNode(true);
-    card.appendChild(dropdownMenu);
-    dropdownMenu.classList.add("active"); // Magdagdag ng visible class
+    dropdownMenu = document.createElement("div");
+    dropdownMenu.classList.add("dropdown-menu", "active"); // Add active class for visibility
+    dropdownMenu.innerHTML = `
+      <ul>
+        <li><a href="#">File Information</a></li>
+        <li><a href="#">Add to Favorites</a></li>
+        <li><a href="#">Edit File</a></li>
+        <li><a href="#">Trash</a></li>
+      </ul>
+    `;
+    card.appendChild(dropdownMenu); // Append the new dropdown to the card
   } else {
+    // Toggle the dropdown's visibility
     dropdownMenu.classList.toggle("active");
+  }
+
+  // Toggle the scroll behavior of the PDF container based on the dropdown visibility
+  const pdfContainer = card.querySelector(".pdf-container");
+
+  // If dropdown is visible, disable scrolling inside the iframe and container
+  if (dropdownMenu.classList.contains("active")) {
+    pdfContainer.style.overflow = "hidden"; // Hide scrollbars
+  } else {
+    pdfContainer.style.overflow = "auto"; // Enable scrollbars when dropdown is not visible
   }
 }
 
-// Mag-add ng listener para isara ang menu kapag nag-click sa ibang lugar
+// Add listener to close all dropdowns when clicking outside
 document.addEventListener("click", () => {
   const activeMenus = document.querySelectorAll(".dropdown-menu.active");
-  activeMenus.forEach((menu) => menu.classList.remove("active"));
+  activeMenus.forEach((menu) => menu.classList.remove("active")); // Remove active class
+  
+  // Also reset the PDF container's overflow when closing the dropdown
+  const pdfContainer = document.querySelector(".pdf-container");
+  if (pdfContainer) {
+    pdfContainer.style.overflow = "auto"; // Re-enable scrolling if dropdown is closed
+  }
 });
+
+
 
 
 
@@ -269,9 +300,8 @@ saveNewItem.addEventListener('click', () => {
         <ul>
           <li><a href="#">File Information</a></li>
           <li><a href="#">Add to Favorites</a></li>
-          <li><a href="#">Move to Trash</a></li>
-          <li><a href="#">Rename</a></li>
-          <li><a href="#">Delete</a></li>
+          <li><a href="#">Edit File</a></li>
+          <li><a href="#">Trash</a></li>
         </ul>
       </div>
     </div>
