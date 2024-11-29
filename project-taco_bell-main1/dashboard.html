@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="dashboard/dashboard.css" />
     <link rel="stylesheet" href="dashboard/modal.css" />
@@ -54,7 +55,7 @@
       <div class="menu_content">
           <ul class="menu_items">
               <li class="item">
-                  <a href="dashboard.html" class="nav_link" onclick="loadContent('myVault.html')">
+                  <a href="dashboard.html" class="nav_link" id="myVaultLink" onclick="open('myVault.html')">
                       <span class="navlink_icon"><i class="bx bx-home-alt"></i></span>
                       <span class="navlink">My Vault</span>
                   </a>
@@ -319,11 +320,9 @@
    <!-- Edit Profile Section -->
    <div class="main-content">
     <div id="editProfileSection" class="edit-profile-section" style="display: none;">
-      <h1>Personal Information</h1>
-      <br>
-      <hr>
+    
       
-      <h2 class="page-title">Your Information</h2>
+      <h2 class="page-title">Faculty Information</h2>
       <p class="page-tagline">Review and update your information to enhance your experience</p>
   
       <div class="profile-edit-container1">
@@ -355,9 +354,6 @@
                     <input type="text" id="department1" class="modal-input1" disabled />
                 </div>
             </div>
-            
-            <!-- Edit Button -->
-            <button id="editButton1" onclick="toggleEditing1()">Edit</button>
         </div>
     </div>
     
@@ -411,32 +407,32 @@
 <div class="accountcontent" id="accountSettingsContent" style="display: none;">
   <h1 class="page-heading">Account Settings</h1>
   <hr class="divider">
-  <!-- Additional content goes here -->
   <h2 class="page-title">Security</h2>
   <p class="page-tagline">Recommendations to enhance the security of your account</p>
   <div class="big-rectangle">
       <div class="account-title">Signing In</div>
       <div class="account-description">Keep your access to your account seamless by regularly updating this information.</div>
       <div class="account-buttons">
-          <div class="account-button">
+          <div class="account-button" data-editable="email">
               <span>Email</span>
-              <span class="user-email">user@gmail.com</span>
+              <span class="user-email editable-field">user@gmail.com</span>
               <i class="bx bx-chevron-right arrow-left-2"></i>
           </div>
-          <div class="account-button">
+          <div class="account-button" data-editable="password">
               <span>Password</span>
-              <span class="user-password">****************</span>
+              <span class="user-password editable-field">****************</span>
               <i class="bx bx-chevron-right arrow-left-2"></i>
           </div>
-          <div class="account-button">
+          <div class="account-button" data-editable="faculty-id">
               <span>Faculty ID</span>
-              <span class="user-id">123456</span>
+              <span class="user-id editable-field">123456</span>
               <i class="bx bx-chevron-right arrow-left-2"></i>
           </div>
+          <button id="editButton1" onclick="toggleEditing1()">Edit</button>
       </div>
-    
   </div>
 </div>
+
 
 <!-- Content Section -->
 <div class="contentMain" id="contentMain">
@@ -446,29 +442,36 @@
   <div class="card-container" id="card-container">
      
     <!-- Card 1 -->
-    <div class="card"  style="display: none;" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc) " >
-      <div class="card-header" data-pdf-src="">
-        <i class="fas fa-file file-icon"></i>
-        <h3 class="card-title"></h3>
-        <a class="fas fa-ellipsis-v three-dots"  onclick="toggleMenu(event)"></a>
-        <div class="dropdown-menu" id="dropdown-menu">
-          <ul>
-            <li><a href="#">File Information</a></li>
-            <li><a href="#">Add to Favorites</a></li>
-            <li><a href="#">Edit File</a></li>
-            <li><a href="#">Trash</a></li>
-          </ul>
+    <div class="card" style="display: none" data-pdf-src=".pdf" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc)">
+      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Left Section: File Icon and Title -->
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <!-- File Icon -->
+          <i class="fas fa-file file-icon"></i>
+          <!-- Card Title -->
+          <h3 class="card-title"></h3>
         </div>
+    
+        <!-- Right Section: Action Icons -->
+        <div class="icon-group">
+          <!-- Star Icon -->
+          <a class="bx bx-star icon"  title="Add to Favorites"   onclick="toggleStarColor(this)"></a>
+          <!-- Trash Icon -->
+          <a class="bx bx-trash icon" title="Move to Trash" onclick="toggleIconColor(this)"></a>
+          <!-- Info Icon -->
+          <a class="bx bx-info-circle icon" title="File Information" onclick="toggleIconColor(this)"></a>
+        </div>
+      </div>
+    
       <div class="pdf-container">
         <iframe src=".pdf#toolbar=0" type="application/pdf" class="pdf-iframe"></iframe>
-      </div>
       </div>
     </div>
     
     
+    
   </div>
 </div>
-
 
 
 

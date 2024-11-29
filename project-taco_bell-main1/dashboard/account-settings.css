@@ -44,7 +44,7 @@
 /* Rectangle Styling */
 .big-rectangle {
     width: 95%;
-    height: 330px;
+    height: 365px;
     background-color: #f6ebdb;
     border: 1px solid #b3b3b3;
     margin-top: 10px;
@@ -130,4 +130,24 @@
     justify-content: flex-end;
     gap: 0px;
     margin-top: 40px;
+}
+
+#editButton1 {
+    margin-left: 93%; /* Align the Edit button to the right */
+    width: 60px;
+    font-size: 14px;
+    height: 40px; /* Set the font size */
+    padding: 5px; /* Add padding */ /* Green background color */
+    color: black; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; 
+  }
+
+  .editable-field.editing {
+    border: 1px dashed #007bff; /* Highlight with a dashed border */
+    background-color: #f9f9f9; /* Light background */
+    padding: 2px;
+    border-radius: 4px;
 }

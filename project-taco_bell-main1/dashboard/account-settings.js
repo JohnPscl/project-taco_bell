@@ -61,3 +61,31 @@ confirmQuitBtn.addEventListener("click", () => {
   // Perform sign-out action here
   modal.style.display = "none";
 });
+
+function toggleEditing1() {
+  const editButton = document.getElementById('editButton1');
+  const editableFields = document.querySelectorAll('.editable-field');
+  const isEditing = editButton.textContent === 'Save';
+
+  if (isEditing) {
+      // Save data and disable editing
+      editableFields.forEach(field => {
+          const key = field.parentElement.getAttribute('data-editable');
+          const value = field.textContent.trim();
+          localStorage.setItem(key, value); // Save to localStorage
+          field.contentEditable = "false"; // Disable editing
+          field.classList.remove('editing'); // Remove editing styling
+      });
+      editButton.textContent = 'Edit'; // Switch button back to Edit
+  } else {
+      // Enable editing
+      editableFields.forEach(field => {
+          const key = field.parentElement.getAttribute('data-editable');
+          field.textContent = localStorage.getItem(key) || field.textContent; // Load saved data if available
+          field.contentEditable = "true"; // Enable editing
+          field.classList.add('editing'); // Add editing styling
+      });
+      editButton.textContent = 'Save'; // Switch button to Save
+  }
+}
+

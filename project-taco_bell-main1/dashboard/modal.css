@@ -507,13 +507,16 @@ button {
   overflow:hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   height: 220px;
+  
 }
 
 /* Hover effect for the card */
 .card:hover {
   background-color: #eadbc2;
 }
-
+.card.clicked {
+  background-color: #4d3914; /* New background color after click */
+}
 /* Card header image */
 .card img {
   width: 100%;
@@ -544,13 +547,13 @@ button {
 
 /* PDF container */
 .pdf-container {
-  background-color: transparent; /* Custom background color for the container */
-  border-radius: 8px; /* Rounded corners for the container */
-  padding: 0; /* Space between the PDF and container edges */
-  max-width: 100%; /* Ensures the container stays within its parent */
-  overflow: hidden; /* Ensures no scrollbars are shown for the container */
+  background-color: transparent;
+  border-radius: 8px;
+  padding: 0;
+  max-width: 100%;
+  overflow: hidden;
   display: flex;
-  justify-content: center; /* Centers the embedded PDF inside */
+  justify-content: space-around;/* Centers the embedded PDF inside */
 }
 
 /* Card styling for iframe */
@@ -578,6 +581,7 @@ button {
   display: flex;
   align-items: center; /* Vertically align items */
   margin-top: 5px;
+
 }
 
 /* Container for the icon and title */
@@ -704,3 +708,60 @@ button {
   height: 100%;
   border: none;
 }
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+.file-icon {
+  font-size: 20px;
+  color: #383838;
+}
+/* Icon Group Styling */
+.icon-group {
+  display: flex;
+  gap: 0px; /* Space between icons */
+}
+
+.icon-group .icon {
+  font-size: 20px;
+  color: #383838;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease, padding 0.2s ease;
+  margin-right: 5px;
+  background-color: transparent; /* No background initially */
+  border-radius: 50%; /* Ensures circular background */
+  padding: 5px; /* Initial padding for a small circle */
+}
+
+.icon-group .icon:hover {
+  color: #333; /* Change text color */
+  background-color: #fdf0df; /* Add background */
+  border-radius: 50%; /* Keep it circular */
+  padding: 5px; /* Increase padding to make the circle bigger */
+}
+
+
+/* Keyframe animation for color change */
+@keyframes starPulse {
+  0% {
+    color: #383838; /* Initial color */
+  }
+  50% {
+    color: yellow; /* Color changes to yellow */
+  }
+  100% {
+    color: #383838; /* Return to original color */
+  }
+}
+
+/* When the star is favorited, trigger the pulse animation */
+.icon-group .icon.favorited {
+  animation: starPulse 1s ease-in-out; /* Apply pulse animation */
+}
+
+

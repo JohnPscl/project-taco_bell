@@ -200,9 +200,7 @@ function toggleMenu(event) {
     dropdownMenu.innerHTML = `
       <ul>
         <li><a href="#">File Information</a></li>
-        <li><a href="#">Add to Favorites</a></li>
-        <li><a href="#">Edit File</a></li>
-        <li><a href="#">Trash</a></li>
+        <li><a href="#">Move to Trash</a></li>
       </ul>
     `;
     card.appendChild(dropdownMenu); // Append the new dropdown to the card
@@ -280,40 +278,52 @@ saveNewItem.addEventListener('click', () => {
   // Generate a temporary URL for the uploaded file
   const fileURL = URL.createObjectURL(fileInputElement); // Temporary URL
 
-  // Create a new card element
-  const newCard = document.createElement('div');
-  newCard.classList.add('card');
-  newCard.setAttribute('data-pdf-src', fileURL); // Store PDF URL in card attribute
+// Create a new card element
+const newCard = document.createElement('div');
+newCard.classList.add('card');
+newCard.setAttribute('data-pdf-src', fileURL); // Store PDF URL in card attribute
 
-  // Add content to the new card
-  newCard.innerHTML = `
-    <div class="card-header">
+// Add content to the new card
+newCard.innerHTML = `
+  <div class="card-header" data-pdf-src="" style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; gap: 10px;">
       <i class="fas fa-file file-icon"></i>
-      <h3 class="card-title">${fileName.toUpperCase()}</h3>
-      <a class="fas fa-ellipsis-v three-dots" onclick="toggleMenu(event)"></a>
+      <h3 class="card-title">${fileName}</h3>
     </div>
-    <div class="pdf-container">
-      <iframe src="${fileURL}" type="application/pdf" class="pdf-iframe"></iframe>
+    <div class="icon-group" style="display: flex; gap: 0x;">
+      <a class="bx bx-star icon" title="Add to Favorites"></a>
+      <a class="bx bx-trash icon" title="Move to Trash"></a>
+      <a class="bx bx-info-circle icon" title="File Information"></a>
     </div>
-    <div class="dropdown-container">
-      <div class="dropdown-menu" id="dropdown-menu">
-        <ul>
-          <li><a href="#">File Information</a></li>
-          <li><a href="#">Add to Favorites</a></li>
-          <li><a href="#">Edit File</a></li>
-          <li><a href="#">Trash</a></li>
-        </ul>
-      </div>
-    </div>
-  `;
+  </div>
+  <div class="pdf-container">
+    <iframe src="${fileURL}" type="application/pdf" class="pdf-iframe"></iframe>
+  </div>
+`;
 
-  // Add click event to open the PDF in a new tab
-  newCard.addEventListener('click', () => {
-    const pdfSrc = newCard.getAttribute('data-pdf-src');
-    if (pdfSrc) {
-      window.open(pdfSrc, '_blank'); // Open the PDF in a new tab
+// Add click event to open the PDF in a new tab (default behavior)
+newCard.addEventListener('click', () => {
+  const pdfSrc = newCard.getAttribute('data-pdf-src');
+  if (pdfSrc) {
+    window.open(pdfSrc, '_blank'); // Open the PDF in a new tab
+  }
+});
+
+// Prevent the click event from propagating for specific icons
+const icons = newCard.querySelectorAll('.icon'); // Select all icons inside the card
+icons.forEach((icon) => {
+  icon.addEventListener('click', (event) => {
+    event.stopPropagation(); // Stop the event from reaching the card
+    // You can also add specific functionality for each icon here
+    if (icon.classList.contains('bx-star')) {
+      console.log('Star icon clicked');
+    } else if (icon.classList.contains('bx-trash')) {
+      console.log('Trash icon clicked');
+    } else if (icon.classList.contains('bx-info-circle')) {
+      console.log('Info icon clicked');
     }
   });
+});
 
   // Append the new card to the card container
   cardContainer.appendChild(newCard);
@@ -375,3 +385,5 @@ window.addEventListener('click', (event) => {
     filterModal.style.display = 'none';
   }
 });
+
+
