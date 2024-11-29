@@ -45,7 +45,7 @@
 
                 <!-- Create New Account Section -->
                 <div class="create">
-                    <a href="createacc.php" id="create-account-link">
+                    <a href="signup.php" id="create-account-link">
                         <button type="button">Create new account</button>
                     </a>
                 </div>

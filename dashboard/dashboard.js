@@ -61,7 +61,7 @@ closeBtn.onclick = function() {
 // Confirm sign out action
 confirmQuit.onclick = function() {
   // Perform the sign out action here, e.g., redirect to login page
-  window.location.href = 'index.html'; // Example action
+  window.location.href = 'index.php'; // Example action
 }
 
 // Cancel quit action (hide the modal)

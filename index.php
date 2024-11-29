@@ -28,7 +28,7 @@
         <div class="nav-container">
             <nav class = main-nav>
                 <a href="#intro" class="logo-container">
-                    <img src="./Assets/Logo/engineering logo.png" alt="Logo" class="logo">
+                    <img src="./Assets/Logo/engineering_logo.png" alt="Logo" class="logo">
                 </a>
                 
                 <ul class="nav-links">
@@ -323,7 +323,7 @@
             </div>
 
             <div class="customer-image-container">
-                <img class="customer1-image" src="./Assets/Logo/engineering logo.png" alt="customer">
+                <img class="customer1-image" src="./Assets/Logo/engineering_logo.png" alt="customer">
             </div>
         </section>
 
