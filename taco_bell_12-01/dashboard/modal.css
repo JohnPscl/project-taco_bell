@@ -763,9 +763,63 @@ button {
 /* Container for the icon and title */
 .file-info {
   display: flex;
-  align-items: center; /* Align icon and title horizontally */
+  align-items: center; /* Alibackground-color: #f1e3ce;gn icon and title horizontally */
+}
+.undo-button {
+  position: fixed;
+    bottom: 70px;
+    left: 20px;
+    background-color: #fffefe;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    opacity: 1;    /* Fully visible */
+    transition: opacity 0.5s ease-out; /* Smooth fade-out transition */
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    height: 7%;
+    max-width: 300px;
+    z-index: 1000;
 }
 
+
+.undo-button.hide {
+  opacity: 0;  /* Fade out */
+  pointer-events: none;  /* Prevent any interactions with the element */
+}
+.undo-button span {
+  font-size: 15px; /* Adjusting font size */
+  color: #333; /* Dark text color */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.undo-button button {
+  background-color: #f1e3ce;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.undo-button button:hover {
+  background-color: #eadbc2; /* Darker blue on hover */
+}
+
+.close {
+  font-size: 24px; /* Larger size for the close button */
+  color: #333; /* Dark color */
+  cursor: pointer;
+  margin-left: auto; /* Position it at the right end */
+  padding: 0 5px; /* Padding around the button */
+}
+
+.close:hover {
+  color: red; /* Red color on hover */
+}
 
 /* START - ICON IN CARD */
 
@@ -848,6 +902,42 @@ button {
   margin-left: 80px;
 }
 
+
+
+/* Main content container */
+.contentMain2 {
+  margin-left: 270px;
+  padding: 20px;
+  padding-top: 70px;
+  display: block;
+}
+
+/* Account heading */
+.page-headinggg2 {
+  margin-top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--ff-poppins);
+  color: #4a4a4a;
+  padding: 10px;
+}
+
+/* Divider line */
+.divider2 {
+  border: 1px solid #ccc;
+  width: 95%;
+  margin-top: 5px;
+}
+
+/* Container for the card */
+.card-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px;
+  justify-content: left;
+  margin-left: 80px;
+}
 
 /* START - MODAL TRASH */
 

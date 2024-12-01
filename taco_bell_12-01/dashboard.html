@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li class="item">
-                <a href="#" class="nav_link" onclick="loadContent('trash.html')">
+                <a href="#contenMain2" class="nav_link" id="myTrash">
                     <span class="navlink_icon"><i class="bx bx-trash"></i></span>
                     <span class="navlink">Trash</span>
                 </a>
@@ -458,7 +458,7 @@
   <div class="card-container" id="card-container">
      
     <!-- Card 1 -->
-    <div class="card"  style="display: none" data-pdf-src="" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc)">
+    <div class="card"  data-card-id="card-1"  style="display: none" data-pdf-src="" ondblclick="openModalOnAnotherPage(this.dataset.pdfSrc)">
       <div class="card-header" data-pdf-src="" style="display: flex; justify-content: space-between; align-items: center;">
         <div style="display: flex; align-items: center; gap: 10px;">
           <i class="fas fa-file file-icon"></i>
@@ -479,10 +479,20 @@
     </div>
     
   </div>
+  <!-- Undo Button (Initially Hidden) -->
+ 
+  <div class="undo-button" id="undoLink" style="display: none;">
+    <span>File moved to trash</span>
+    <button id="undoButton" onclick="undoTrashAction()">Undo</button>
+    <span id="closeButton"class="bx bx-x close" onclick="closeUndoButton()"></span>
+  </div>
+  
+  
+
 </div>
 
 
-<!-- Content Section -->
+<!-- Content Section Favorites -->
 <div class="contentMain1" id="contentMain1"  style="display: none;">
   <h1 class="page-headingg1">Favorites</h1>
   <hr class="divider1">
@@ -493,6 +503,18 @@
   </div>
 </div>
 
+
+
+<!-- Content Section Trash -->
+<div class="contentMain2" id="contentMain2" style="display: none;">
+  <h1 class="page-headingg2">Trash</h1>
+  <hr class="divider2">
+  <div class="card-container2" id="trash-container">
+    <!-- Trash items will be appended here -->
+  </div>
+</div>
+  
+  
 
 
 <!-- JavaScript Files -->

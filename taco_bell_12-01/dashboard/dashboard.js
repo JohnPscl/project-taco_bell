@@ -125,7 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const myVaultLink = document.getElementById('myVaultLink');
   const contentMain = document.querySelector(".contentMain");
   const contentMain1 = document.getElementById('contentMain1'); // Added contentMain1
+  const contentMain2 = document.getElementById('contentMain2'); // Added contentMain2
   const myFavoritesLink = document.getElementById('myFavorites');
+  const myTrashLink = document.getElementById('myTrash');
+  const trashContainer = document.getElementById('trash-container');
   const favoritesContainer = document.getElementById('favorites-container');
   const navbar = document.querySelector(".navbar");
 
@@ -135,7 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
     editProfileSection.style.display = "none";
     accountSettingsContent.style.display = "none";
     contentMain.style.display = "none";
-    contentMain1.style.display = "none"; // Hide contentMain1 completely
+    contentMain1.style.display = "none"; 
+    contentMain2.style.display = "none",
+    trashContainer.style.display = "none"; // Hide Trash
     favoritesContainer.style.display = "none"; // Hide Favorites
     navbar.style.visibility = "hidden";
 
@@ -156,7 +161,13 @@ document.addEventListener("DOMContentLoaded", function () {
       favoritesContainer.style.display = "flex"; // Ensure favorites are visible
       navbar.style.visibility = "visible";
       document.body.classList.remove('no-scroll');
+    } else if (sectionToShow === "contentMain2") {
+      contentMain2.style.display = "block"; // Show contentMain2
+      trashContainer.style.display = "flex"; // Ensure trash is visible
+      navbar.style.visibility = "visible";
+      document.body.classList.remove('no-scroll');
     }
+    
   }
 
   // Event listeners for navigating between sections
@@ -178,6 +189,11 @@ document.addEventListener("DOMContentLoaded", function () {
   myFavoritesLink.addEventListener('click', function (event) {
     event.preventDefault();
     toggleSection("contentMain1");
+  });
+  
+  myTrashLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    toggleSection("contentMain2");
   });
 });
 
@@ -238,8 +254,6 @@ document.addEventListener("click", () => {
     pdfContainer.style.overflow = "auto"; // Re-enable scrolling if dropdown is closed
   }
 });
-
-
 // Function to add a new card
 function addCard(title, pdfSrc) {
   const cardContainer = document.getElementById('card-container');
@@ -309,6 +323,12 @@ function initializeCardEvents() {
       // Add 'clicked' class to the clicked card
       card.classList.add('clicked');
     });
+
+    // Add double-click event listener to open PDF in new tab
+    card.addEventListener('dblclick', () => {
+      const pdfSrc = card.getAttribute('data-pdf-src');
+      window.open(pdfSrc, '_blank'); // Open PDF in a new tab
+    });
   });
 
   // Add a click event listener to the document
@@ -317,7 +337,6 @@ function initializeCardEvents() {
     cards.forEach(card => card.classList.remove('clicked'));
   });
 }
-
 
 // Your existing code
 document.addEventListener('DOMContentLoaded', () => {
@@ -416,7 +435,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize card events
   initializeCardEvents();
 });
-
 // Reference to the contentMain section
 const contentMain = document.getElementById("contentMain");
 

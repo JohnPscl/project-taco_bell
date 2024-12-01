@@ -64,50 +64,7 @@ function openModalOnAnotherPage(pdfSrc) {
 
 
 
-
-//START - CHANGE COLOR OF CARDS
-
 // Ensure this script runs after the DOM is fully loaded, to avoid targeting elements before they are ready
-document.addEventListener('DOMContentLoaded', function () {
-  const card = document.getElementById('myCard'); // Target the card element
-
-  // Single click event to change the color
-  card.addEventListener('click', function () {
-    // Add a class to change the background color
-    card.classList.add('clicked');
-  });
-});
-
-// Get all the cards
-const cards = document.querySelectorAll('.card');
-
-// Loop through each card and add the click event
-cards.forEach(card => {
-  card.addEventListener('click', (event) => {
-    // Prevent the document click handler from firing when a card is clicked
-    event.stopPropagation();
-    
-    // Remove 'clicked' class from all cards
-    cards.forEach(card => {
-      card.classList.remove('clicked');
-    });
-    
-    // Add 'clicked' class to the clicked card
-    card.classList.add('clicked');
-  });
-});
-
-// Event listener for clicking anywhere on the document
-document.addEventListener('click', () => {
-  // Remove 'clicked' class from all cards when clicking anywhere on the page
-  cards.forEach(card => {
-    card.classList.remove('clicked');
-  });
-});
-
-//END - CHANGE COLOR OF CARDS
-
-//START - CHANGE COLOR OF CARDS
 document.addEventListener('DOMContentLoaded', function () {
   const cards = document.querySelectorAll('.card'); // Select all cards
 
@@ -122,20 +79,23 @@ document.addEventListener('DOMContentLoaded', function () {
 function toggleStarColor(icon) {
   // Find the parent card element
   const card = icon.closest('.card');
+  const cardId = card.dataset.cardId;
 
   // Find the Favorites container
   const favoritesContainer = document.getElementById('favorites-container');
 
-  // Check if the star icon is filled or empty
+  // Check if the card is already in favorites
+  const cardInFavorites = favoritesContainer.querySelector(`[data-card-id="${cardId}"]`);
+
+  // Toggle the star icon's class and color
   if (icon.classList.contains('bx-star')) {
     // Change to filled star (bxs-star) and make it yellow
     icon.classList.remove('bx-star');
     icon.classList.add('bxs-star');
     icon.style.color = '#383838';
 
-    // Check if the card is already in Favorites
-    if (!favoritesContainer.querySelector(`[data-card-id="${card.dataset.cardId}"]`)) {
-      // Clone the card to avoid moving the original
+    // If the card is not in favorites yet, move it there
+    if (!cardInFavorites) {
       const clonedCard = card.cloneNode(true);
 
       // Ensure the cloned card's star icon works independently
@@ -143,7 +103,7 @@ function toggleStarColor(icon) {
       clonedStarIcon.addEventListener('click', () => toggleStarColor(clonedStarIcon));
 
       // Set a unique identifier to match the original card
-      clonedCard.dataset.cardId = card.dataset.cardId;
+      clonedCard.dataset.cardId = cardId;
 
       // Append the cloned card to Favorites
       favoritesContainer.appendChild(clonedCard);
@@ -154,30 +114,175 @@ function toggleStarColor(icon) {
     icon.classList.add('bx-star');
     icon.style.color = '';
 
-    // Find and remove the corresponding card in Favorites
-    const cardInFavorites = favoritesContainer.querySelector(`[data-card-id="${card.dataset.cardId}"]`);
+    // Remove the card from the Favorites container
     if (cardInFavorites) {
       cardInFavorites.remove();
+    }
+
+    // Also reset the star in the original card in My Vault
+    const originalCardInVault = document.querySelector(`[data-card-id="${cardId}"]`);
+    if (originalCardInVault) {
+      const originalStarIcon = originalCardInVault.querySelector('.bx');
+      originalStarIcon.classList.remove('bxs-star');
+      originalStarIcon.classList.add('bx-star');
+      originalStarIcon.style.color = '';
     }
   }
 }
 
-//START - MODAL TRASH
+// Event listener for clicking anywhere on the document (to manage the card color toggle in the vault)
+document.addEventListener('click', (event) => {
+  if (event.target && event.target.classList.contains('bx-star') || event.target.classList.contains('bxs-star')) {
+    // Prevent the document click handler from firing when a card or star is clicked
+    event.stopPropagation();
+
+    // Check if the clicked element is inside the favorites section
+    const isInFavorites = event.target.closest('#favorites-container');
+    const card = event.target.closest('.card');
+    const cardId = card.dataset.cardId;
+
+    if (isInFavorites) {
+      // In the favorites section: Remove the card when the star is clicked
+      if (event.target.classList.contains('bxs-star')) {
+        // Change the star to empty (unfilled) and remove the card from favorites
+        event.target.classList.remove('bxs-star');
+        event.target.classList.add('bx-star');
+        event.target.style.color = '';
+
+        const cardInFavorites = document.querySelector(`[data-card-id="${cardId}"]`);
+        if (cardInFavorites) {
+          cardInFavorites.remove();
+        }
+
+        // Reset the star in the original card in My Vault
+        const originalCardInVault = document.querySelector(`[data-card-id="${cardId}"]`);
+        if (originalCardInVault) {
+          const originalStarIcon = originalCardInVault.querySelector('.bx');
+          originalStarIcon.classList.remove('bxs-star');
+          originalStarIcon.classList.add('bx-star');
+          originalStarIcon.style.color = '';
+        }
+      }
+    } else {
+      // In the My Vault section: If clicked, toggle between filled and empty stars
+      toggleStarColor(event.target);
+    }
+  }
+});
 // Trash Modal Functionality
 const trashModal = document.getElementById('trashModal');
 const closeTrashModalBtn = document.querySelector('.close-btn-trash');
 const confirmTrashBtn = document.getElementById('confirmTrash');
 const cancelTrashBtn = document.getElementById('cancelTrash');
 
+// Trash container where deleted cards will go
+const trashContainer = document.getElementById('trash-container');
+
+// Placeholder to store the removed card's parent element before moving to trash
+let lastRemovedCard = null;
+
 // Show Trash Modal
 function openTrashModal(cardElement) {
   trashModal.style.display = 'block';
 
-  // Add additional logic to handle the card being deleted
+  // Add additional logic to handle the card being moved to trash
   confirmTrashBtn.onclick = () => {
-    cardElement.closest('.card').remove();
+    // Clone the card to keep it intact, including the icons and event listeners
+    const cardClone = cardElement.closest('.card').cloneNode(true);
+
+    // Store the original card element for undo
+    lastRemovedCard = cardElement.closest('.card');
+
+    // Remove the star icon from the cloned card (optional)
+    const starIcon = cardClone.querySelector('.bx-star');
+    if (starIcon) {
+      starIcon.remove(); // Remove the star icon (or handle as needed)
+    }
+
+    // Append the cloned card to the trash container
+    trashContainer.appendChild(cardClone);
+
+    // Remove the original card from its current location
+    lastRemovedCard.remove();
+
+    // Show the Undo link
+    const undoLink = document.getElementById('undoLink');
+    undoLink.style.display = 'flex'; // Make the undo button visible
+    undoLink.classList.remove('hide'); // Ensure it's visible and reset the transition
+
+    // Set a timer to hide the Undo button after 5 seconds with a fade-out transition
+    setTimeout(() => {
+      undoLink.classList.add('hide'); // Add hide class to trigger fade-out
+      // Clear the last removed card placeholder after the transition
+      setTimeout(() => {
+        lastRemovedCard = null; // Clear the last removed card placeholder after the fade-out
+      }, 500); // Wait for the fade-out transition to complete
+    }, 5000); // 5000ms = 5 seconds
+
+    // Close the trash modal
     trashModal.style.display = 'none';
   };
+}
+
+// Function to undo the move to trash (restore the card)
+function undoTrashAction() {
+  // Check if there is a card to restore
+  if (lastRemovedCard) {
+    // Clone the last removed card to restore it
+    const cardClone = lastRemovedCard.cloneNode(true);
+
+    // Reattach event listeners for the restored card
+    restoreCardEventListeners(cardClone);
+
+    // Append the cloned card back to the original container (card-container)
+    const cardContainer = document.getElementById('card-container');
+    cardContainer.appendChild(cardClone);
+
+    // Remove it from the trash container
+    trashContainer.innerHTML = '';
+
+    // Hide the Undo button after it's clicked
+    const undoLink = document.getElementById('undoLink');
+    undoLink.style.display = 'none'; // Hide the undo button after undoing the action
+
+    // Clear the last removed card placeholder
+    lastRemovedCard = null;
+  }
+}
+
+// Function to restore event listeners for the card
+function restoreCardEventListeners(cardElement) {
+  // Ensure the card's delete button still works
+  const deleteButton = cardElement.querySelector('.bx-trash');
+  if (deleteButton) {
+    deleteButton.addEventListener('click', (e) => {
+      const cardElement = e.target.closest('.card');
+      openTrashModal(cardElement);
+    });
+  }
+
+  // Reattach the event listener for opening the PDF in a new tab
+  const cardPdfContainer = cardElement.querySelector('.pdf-container');
+  if (cardPdfContainer) {
+    cardPdfContainer.addEventListener('dblclick', (e) => {
+      const pdfSrc = cardElement.dataset.pdfSrc;
+      openModalOnAnotherPage(pdfSrc);
+    });
+  }
+
+  // Reattach the event listener for the star icon
+  const starIcon = cardElement.querySelector('.bx-star');
+  if (starIcon) {
+    starIcon.addEventListener('click', () => toggleStarColor(starIcon));
+  }
+}
+
+// Function to open the PDF in a new tab
+function openModalOnAnotherPage(pdfSrc) {
+  if (pdfSrc) {
+    // Open the PDF in a new tab using window.open
+    window.open(pdfSrc, '_blank');
+  }
 }
 
 // Close Trash Modal
@@ -196,6 +301,31 @@ window.addEventListener('click', (event) => {
   }
 });
 
+// Close the Undo button (hide it)
+function closeUndoButton() {
+  const undoLink = document.getElementById('undoLink');
+  undoLink.style.display = 'none'; // Hide the undo button when close button is clicked
+}
+
+// Example to trigger Trash Modal for a specific card (You should call this function from the appropriate event)
+document.querySelectorAll('.delete-button').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const cardElement = e.target.closest('.card');
+    openTrashModal(cardElement);
+  });
+});
+
+// Example of Undo button click listener
+const undoLink = document.getElementById('undoLink');
+if (undoLink) {
+  undoLink.addEventListener('click', undoTrashAction);
+}
+
+// Example close button inside the undo button container (close undo action visibility)
+const closeUndoBtn = document.getElementById('closeUndoButton');
+if (closeUndoBtn) {
+  closeUndoBtn.addEventListener('click', closeUndoButton);
+}
 
 //END - MODAL TRASH 
 
