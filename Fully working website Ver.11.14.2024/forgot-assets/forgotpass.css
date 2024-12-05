@@ -1,0 +1,194 @@
+@font-face {
+    font-family: Poppins-Reg;
+    src: url(Poppins-Reg.ttf);
+  }
+  @font-face {
+    font-family: Poppins-ExtraLight;
+    src: url(Poppins-ExtraLight.ttf);
+  }
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f1e3ce;
+    font-family: Poppins-Reg;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.container {
+    font-weight: bold;
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: 180px;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.container .left,
+.container .right {
+    flex-basis: 48%;
+}
+
+.left h1 {
+  font-family: Poppins-Reg;
+  padding-top: 40px;
+  font-size: 50px;
+  font-weight: bold; 
+}
+
+.light-weight {
+    font-family: Poppins-ExtraLight;
+    font-weight: bolder; 
+  }
+
+.container .left h2 {
+    font-size: 30px;
+    line-height: 28px;
+    width: auto;
+    margin-top: 15px;
+    font-family: Poppins-Reg;
+    font-weight: 400;
+    color: #383838
+}
+.container .left p {
+    color:#6d6d6c;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 10px 0 30px;
+    
+}
+.container .right .form {
+    left: 10%;
+    bottom: 25px;
+    position: relative;
+    width: 400px;
+    padding: 40px 20px;
+    background-color: #fff5e7;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px black;
+}
+
+.container .right .form .form-group {
+    margin-bottom: -10px;
+}
+
+.container .right .form .form-group input {
+  background-color: #fff5e7;
+  position: relative;
+    height: 50px;
+    width: 100%;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.container .right .form .form-group label {
+    font-weight: lighter;
+  position: relative;
+  left: 10px;
+  bottom: 40px;
+  font-size: 18px;
+  display: block;
+  opacity: 1;
+  color: #aaa;
+  pointer-events: none;
+  
+}
+.container .right .form .form-group input:focus + label,
+.container .right .form .form-group input:not(:placeholder-shown) + label {
+    opacity: 0;
+}
+
+/* Focus effect for the input */
+.container .right .form .form-group input:focus {
+    outline-color: #2c2c2c;
+    border-color: #525252;
+}
+
+.container .right .form .form-group input:focus {
+    outline-color: #2c2c2c;
+}
+
+.container .right .form .login-btn {
+  position: relative;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #4a4a4a;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: opacity .3s ease-in-out;
+}
+
+.container .right .form .login-btn:hover {
+    opacity: 1;
+    background-color: #525252;
+}
+
+.container .right .form a {
+  position: relative;
+  margin-bottom: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #383838;
+    text-align: center;
+    font-family: sans-serif;
+    margin: -10px 0;
+    display: block;
+   
+}
+
+.container .right .form a:hover {
+    text-decoration: underline;
+}
+
+
+.container .right .create {
+    font-family: Poppins-ExtraLight;
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+.container .right .create:hover {
+    text-decoration: underline;
+}
+
+.container .right .create button {
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    padding: 0px 40px;
+    border: none;
+    height: 50px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+.container .right .create button:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,689 @@
+
+/*
+Variables
+*/
+
+:root {
+
+    /*
+    Colors
+    */
+    
+    /*Solid Colors*/
+    
+    /*Background*/
+    --peach-puff: #fff6e8;
+    --light-beige: #f1e3ce;
+    
+    /*Text Colors*/
+    --eerie-black-2: hsl(240, 2%, 12%);
+    /*shadow*/
+    --eerie-black-1: hsl(240, 2%, 13%);
+    /*Outline*/
+    
+    /*Normal State*/
+    --light-gray: #4a4a4ab2;
+    /*Hovered State*/
+    --dark-gray: #55585d;
+    /*Clicked State*/
+    --jet: #383838;
+    
+    /*
+    Typography
+    */
+    
+--ff-poppins: 'Poppins', sans-serif;
+    
+    /* font-size */
+    --fs-1: 21px;
+    --fs-2: 18px;
+    --fs-3: 17px;
+    --fs-4: 16px;
+    --fs-5: 15px;
+    --fs-6: 14px;
+    --fs-7: 13px;
+    --fs-8: 11px;
+    /*Additional FS*/
+    --fs-9: 44px;
+    --fs-10: 24px;
+    --fs-11: 60px;
+    --fs-12: 25px;
+    
+    /* font-weight */
+    --fw-300: 300;
+    --fw-400: 400;
+    --fw-500: 500;
+    --fw-600: 600;
+    --fw-700: 700;
+    --fw-800: 800;
+    }
+
+
+/*
+Reused Styles
+*/
+
+
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+    scroll-padding-top: 10rem;
+}
+
+body {
+        overflow-x: hidden;
+        background-color: var(--peach-puff);
+        margin: 0;
+        padding:0;
+        width: 100%;
+        box-sizing: border-box;
+        font-family: var(--ff-poppins);
+        letter-spacing: 1px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%px;
+        display: flex ;
+        scroll-behavior: smooth;
+        
+}
+
+section {
+    width: 100vw;
+}
+
+.container
+{
+    max-width: 100%; /* Full width of the viewport */
+    padding: 0px;
+}
+
+/*
+NavBar
+*/
+
+.nav-container 
+{
+    display: flex;
+    height: 4.5rem;
+    width: 100vw;
+}
+
+.main-nav {
+    height: 4.5rem;
+    width: 100vw;
+    background-color: var(--peach-puff);
+    box-shadow: 0 3px 20px rgba(36, 35, 35, 0.2);
+    display: flex;
+    align-items: center;
+    position: fixed; /* Keep nav fixed at the top */
+    top: 0;  /* Start at top */
+    z-index: 100;
+    transition: top 0.3s ease-in-out; 
+}
+
+.logo-container {
+    display: flex;
+    width: 65px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.logo {
+    
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.nav-links {
+    font-family: var(--ff-poppins);
+    display: flex;
+    position: sticky;
+    list-style: none;
+    flex-grow: 1;
+    align-items: center;
+    gap: 80px;
+    text-align: center;
+
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--light-gray);
+    font-size: --fs-2;
+    cursor: pointer;
+}
+
+
+
+.nav-links li a:hover {
+    color: var(--dark-gray);
+    border-bottom: 1px solid --jet;
+}
+.nav-links li a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--jet);
+    transition: width 0.3s;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a:hover::before {
+    width: 100%;
+}
+
+.sign-button {
+    position: relative; /* This allows for manual adjustments */
+    background-color:var(--jet);
+    border-radius: 5px;
+    color: var(--peach-puff);
+    padding: 0.6rem 0.8rem;
+    font-size: var(--fs-1);
+    font-weight: var(--fw-500);
+    cursor: pointer;
+    margin-right: 50px; /* Set your desired margin here */
+}
+
+.sign-button:hover {
+    background-color: var(--eerie-black-2);
+    transition: all ease-in-out 350ms;
+}
+
+
+/*
+Intro
+*/
+
+/*Intro Container*/
+
+.intro-container {
+    display: flex;
+    height: 650px;
+    box-sizing: border-box;
+}
+
+.credentials{
+    position: absolute;
+    display: flex;
+    margin-left: 130px;
+    margin-top: 100px;
+    font-size: 50px;
+    font-family: var(--ff-poppins);
+    font-weight: var(--fw-600);
+    
+    
+}
+.intro-descript{
+    position: absolute;
+    display: flex;
+    margin-left: 130px;
+    margin-top: 290px;
+    font-size: 20px;
+    font-weight: thin;
+    font-family: var(--ff-poppins);
+    font-weight: var(--fw-300);
+    color: var(--light-gray);
+}
+.sign-inn-button{
+    display: flex;
+    position: absolute; /* This allows for manual adjustments */
+    background-color: var(--jet);
+    border-radius: 5px;
+    color: var(--peach-puff);
+    padding: 0.6rem 0.8rem;
+    font-size: var(--fs-1);
+    font-weight: var(--fw-300);
+    cursor: pointer;
+    margin-left: 130px;
+    margin-top: 400px;
+}
+.sign-inn-button:hover {
+    background-color: var(--eerie-black-2);
+    transition: all ease-in-out 350ms;
+}
+
+
+/*
+Second NavBar and frame
+*/
+
+
+.feature-container {
+    width: 100vw;
+    position: relative;
+}
+.navbar {
+    transition: top 0.3s;
+    border-radius: 20px;   
+    position: sticky;
+    display: flex;
+    box-shadow: 0 3px 20px rgba(36, 35, 35, 0.2);
+    justify-content: center;
+    width: 45%; /* Fixed width */
+    background-color: #fff6e8; /* Light brown background */
+    border-radius: 50px;
+    margin-top: 10px ; /* Centering the navbar */
+    margin-left: 430px;
+    top: 90px;
+        transition: top 0.3s;
+       
+  }
+
+  
+  .nav-items {
+    margin-right:28px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row; /* Stack items vertically */
+    align-items: center;
+    gap: 50px; /* Reduced gap for compact look */
+  }
+  
+  .nav-items li {
+    display: block;
+  }
+  
+  .nav-items a {
+    color: var(--light-gray);
+    text-decoration: none;
+     /* Smaller padding */ 
+    font-family: var(--ff-poppins);
+    font-size: var(--fs-2);
+    width: 100%; 
+    text-align: center; 
+  }
+
+  
+  .nav-items a:hover {
+    text-decoration: underline;
+    color: var(--jet);
+
+  }
+
+  .features{
+    position: absolute;
+    margin-left: 300px;
+    margin-top: 800px;
+    top: 30px;
+}
+  
+/*store & Feature section*/
+
+.container-features {
+    height: 500px;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.features-header{
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+.features-descript{
+    display: flex;
+    font-size: 30px;
+    margin-top: -30px;
+    font-family: var(--ff-poppins);
+    font-size: var(--fs-10);
+    justify-content: center;
+    text-align: center;
+    color: var(--light-gray);
+}
+
+/*Feature Accordion Effect*/
+
+.feature1, .feature2, .feature3 {
+    display: flex;
+    align-items: flex-start; /* Align items vertically at the top */
+    margin-left: 90px;
+    margin-bottom: 10px; /* Space between each feature */
+     /* To contain the vertical line expansion */
+}
+
+.feature-right {
+    margin-left: 900px;
+}
+
+.vertical-line {
+    width: 3px;
+    height: 40px; /* Initial height of the line */
+    background-color: var(--jet);
+    transition: height 0.5s ease-in-out; /* Smooth transition for height */
+    margin-right: 10px;
+}
+
+.vertical-line.expanded {
+    height: 120px; /* Expanded height when button is clicked */
+}
+
+.content {
+    display: flex;
+    flex-direction: column; /* Stack button and text vertically */
+    align-items: flex-start;
+}
+
+.buttonStyle {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: var(--jet);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: var(--ff-poppins);
+    font-weight: var(--fw-600);
+    transition: margin-top 0.5s ease; /* Smooth transition for button movement */
+}
+
+.text {
+    opacity: 0;
+    max-height: 0; /* Start with collapsed height */
+    overflow: hidden;
+    margin-left: 15px;
+    font-size: 16px;
+    transition: max-height 0.5s ease, opacity 0.5s ease; /* Smooth text transition */
+    margin-top: 5px;
+    color: var(--light-gray);
+}
+
+.text.visible {
+    opacity: 1;
+    max-height: 150px; /* Expand to fit the text */
+    color: var(--light-gray);
+}
+
+/*
+Customer Section
+*/
+.container-customer {
+    height: 560px;
+    width: 100vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 105px;
+}
+
+.customer-text-container {
+    margin-left: 60px;
+    height: 560px;
+    width: 730px;
+}
+
+.customer-header {
+    margin: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.customer-descript {
+    display: flex;
+    font-size: 30px;
+    margin-top: -30px;
+    font-family: var(--ff-poppins);
+    font-size: var(--fs-10);
+    text-align: justify;
+    margin-left: 30px;
+    color: var(--light-gray);
+}
+
+
+.customer-image-container {
+    margin-left: 60px;
+    height: 90%;
+    width: 40%;
+}
+
+.customer1-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+/*
+Team Section
+*/
+
+/*Team Header*/
+
+.team-header {
+    height: 200px;
+    width: 100vw;
+    margin-top: 30px;
+}
+
+.team-intro {
+    font-family: var(--ff-poppins);
+    text-align: center;
+}
+
+.meet-text {
+    font-weight: var(--fw-300);
+    font-size: var(--fs-9);
+}
+
+.team-text {
+    font-size: var(--fs-11);
+}
+
+/*
+The Team
+*/
+
+/*Reused coode - team*/
+
+.container-team {
+    height: 2640px;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.individual-team-container{
+    display: flex;
+    width: 100%;
+}
+
+/*Left Side*/
+
+.text-team-container-left {
+    height: 560px;
+    width: 57%;
+    padding: 50px;
+    font-family: var(--ff-poppins);
+    color: var(--jet);
+}
+
+.text-team-name-left {
+    font-weight: var(--fw-600);
+    font-size: var(--fs-11);
+    text-align: left;
+    margin-top: -20px;
+    margin-left: 0px;
+}
+
+.text-team-position-left {
+    margin-left: 0px;
+    margin-top: -100px;
+    font-size: var(--fs-12);
+    font-weight: var(--fw-400);
+    font-style: italic;
+}
+
+.text-team-descript-left {
+    margin-top: -5px;
+    margin-left: 0px;
+    text-align: justify;
+    font-size: var(--fs-2);
+}
+
+.indiv-team-img-left{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin-left: 45px;
+    filter: grayscale(100%);
+}
+
+.team-img-container-left {
+    height: 90%;
+    width: 400px;
+}
+
+/*Right Side*/
+
+.text-team-container-right {
+    height: 560px;
+    width: 57%;
+    margin-left: 30px;
+    padding: 50px;
+    font-family: var(--ff-poppins);
+    color: var(--jet);
+}
+
+.text-team-name-right {
+    font-weight: var(--fw-600);
+    font-size: var(--fs-11);
+    text-align: right;
+    margin-top: -20px;
+    margin-left: 0px;
+}
+
+.text-team-position-right {
+    margin-left: 0px;
+    margin-top: -100px;
+    font-size: var(--fs-12);
+    font-weight: var(--fw-400);
+    text-align: right;
+    font-style: italic;
+}
+
+.text-team-descript-right {
+    margin-top: -5px;
+    margin-left: 0px;
+    text-align: justify;
+    text-align-last: right;
+    font-size: var(--fs-2);
+}
+
+.indiv-team-img-right{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin-left: -45px;
+    filter: grayscale(100%);
+}
+
+.team-img-container-right {
+    height: 90%;
+    width: 400px;
+}
+
+/*
+Contact Us Section
+*/
+
+footer {
+    background-color: var(--light-beige);
+    height: 300px;
+    color: var(--jet);
+}
+
+.footer-container {
+    margin-left: 60px;
+    display: flex;
+    text-align: left;
+}
+
+.footer-section {
+    width: 100%;
+}
+
+.footer-header {
+    font-weight: var(--fw-800);
+}
+
+.footer-subheader {
+    font-weight: var(--fw-500);
+}
+
+.business-content {
+    color: var(--dark-gray);
+}
+
+.footer-icon {
+    font-size: 30px;
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer-location {
+    color: var(--dark-gray);
+}
+
+
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .logo-container {
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .faculty-title {
+        margin: 0 auto;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links li {
+        margin-bottom: 15px;
+    }
+
+    .login-button {
+        margin: 1rem auto;
+        font-size: 22px;
+    }
+}
