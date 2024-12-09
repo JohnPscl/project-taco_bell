@@ -1,0 +1,222 @@
+@font-face {
+  font-family: Poppins-Reg;
+  src: url(Poppins-Reg.ttf);
+}
+@font-face {
+  font-family: Poppins-ExtraLight;
+  src: url(Poppins-ExtraLight.ttf);
+}
+
+body {
+  font-family: Poppins-Reg;
+  background-color: #f1e3ce;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mid {
+  position: absolute;
+  top:0px; /* Adjust this value to control how far from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-weight: bold;
+  color: #343232;
+  
+}
+.mid h1 {
+  font-size: 60px;
+  font-weight: bold; /* For "Faculty" */
+  color: #343232;
+  margin: 0;
+}
+
+/* Styling for 'Vault' with Lighter Weight */
+.light-weight {
+  font-family: Poppins-ExtraLight;
+  font-weight: 300; /* Light font weight */
+}
+/* Form Wrapper Container */
+.form-wrapper {
+  margin-top: 58px;
+  width: 26em;
+  padding: 30px;
+  background-color: #fff5e7;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px rgb(58, 57, 57);
+}
+
+/* Horizontal Line Style */
+hr {
+  border-top: 2px solid #98938d;
+  margin: 20px 0;
+}
+
+/* Form Container */
+.form-container {
+  width: 100%;
+}
+
+/* Header Text Styles */
+.form-header h1 {
+  left: 50%;
+  text-align: center;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.form-header p {
+  left: 50%;
+  text-align: center;
+  color: #656360;
+  margin: 8px 0;
+}
+
+/* Input Fields */
+.name-fields {
+  display: flex;
+  gap: 10px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  background: #fff5e7;
+  border: 2px solid #656360;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%; /* Default width for other inputs */
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+
+
+input:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+/* Error Messages */
+.error-msg {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+/* Form Control Flex Container */
+.flex-container {
+  display: flex; /* Use flexbox to arrange children in a row */
+  gap: 10px; /* Space between items */
+}
+
+
+
+/* Dropdown and Faculty ID Input Styling */
+select,
+input[type="email"].faculty-id {
+  background: #fff5e7;
+  border: 2px solid #656360; /* Same border size */
+  border-radius: 4px;
+  padding: 10px; /* Same padding size */
+  width: 100%; /* Set to 100% of their container */
+  box-sizing: border-box; /* Include padding and border in width */
+  height: 39px; /* Set a specific height for both */
+  color: #656360;
+}
+
+/* Set a max-width for both to ensure they fit side by side */
+select,
+input[type="email"].faculty-id {
+  flex: 1; /* Allow them to grow equally */
+  min-width: 120px; /* Ensure they don't get too small */
+  border-color: #656360;
+}
+
+/* Input Focus Styles */
+select:focus,
+input[type="email"].faculty-id:focus {
+  outline: none;
+  border-color: #656360; /* Border color on focus */
+  
+}
+
+
+/* Terms Section */
+.terms p {
+  color: #656360;
+  font-size: 12px;
+  line-height: 1.4;
+}
+/* Dropdown Styling */
+
+/* Show the dropdown when 'show' class is added */
+.show {
+  display: block;
+}
+
+.alreadysign {
+  text-align: center; /* Center the text */
+  margin-top: 20px; /* Adjust the space above */
+}
+/* Button Styles */
+button {
+  background: #4a4a4a;
+  border: none;
+  padding: 10px 0;
+  width: 100%;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #303030;
+}
+
+/* Link Styles */
+a {
+  top: 20px;
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.alreadysign a {
+  color: #2c2c2c; /* Change link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.alreadysign a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+.fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+@keyframes FadeIn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

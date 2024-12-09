@@ -1,0 +1,289 @@
+/* Main content container */
+.accountcontent {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+/* Account heading */
+.page-heading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #4a4a4a;
+    padding: 10px;
+}
+
+/* Divider line */
+.divider {
+    border: 1px solid #ccc;
+    width: 95%;
+    margin-top: 5px;
+}
+
+/* Page title */
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Page tagline */
+.page-tagline {
+    font-size: 17px;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    padding: 10px;
+    text-align: center;
+    margin-top: -15px;
+}
+
+/* Rectangle Styling */
+.big-rectangle {
+    width: 95%;
+    height: 365px;
+    background-color: #f6ebdb;
+    border: 1px solid #b3b3b3;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    min-width: 500px;
+    position: relative;
+}
+
+/* Account Title Styling */
+.account-title {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: var(--ff-poppins);
+    color: #343232;
+    margin-bottom: 5px;
+}
+
+/* Account Description Styling */
+.account-description {
+    font-size: 16px;
+    font-family: var(--ff-poppins);
+    color: #343232;
+}
+
+/* Buttons Container */
+.account-buttons {
+    margin-top: 30px;
+}
+
+/* Button Style */
+.account-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Hover Effect */
+.account-button:hover {
+    background-color: #fff6e8;
+}
+
+.account-label {
+    font-size: 14px !important;
+    color: #6d6d6c !important;
+}
+
+/* Remove border from the last button */
+.account-button:last-child {
+    border-bottom: none;
+}
+
+/* Label alignment */
+.account-button span:first-child {
+    font-size: 16px;
+    color: #343232;
+    flex: 1.5; /* Allows this to take up the space on the left */
+}
+
+/* User information alignment */
+.user-email,
+.user-password,
+.user-id {
+    font-size: 16px;
+    color: #4a4a4a;
+    flex: 2; /* Ensures the user info section has more space */
+    text-align: left;
+}
+
+/* Arrow alignment with margin */
+.arrow-left-2 {
+    font-size: 25px;
+    color: #343232;
+    margin-right: 15px; /* Adjust margin for consistent spacing */
+}
+.modal-buttons1 {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0px;
+    margin-top: 40px;
+}
+
+  .editable-field.editing {
+    border: 1px dashed #007bff; /* Highlight with a dashed border */
+    background-color: #f9f9f9; /* Light background */
+    padding: 2px;
+    border-radius: 4px;
+
+
+}
+
+    .modal.fade .modal-dialog  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-width: 90%; /* Allows responsiveness */
+    width: 30%; /* Modal width */
+    height: 65vh; /* Set height to 65% of the viewport height */
+  }
+  
+  .modal-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the modal */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    background-color: #fefefe; /* White background for the modal */
+  }
+  
+  .modal-header {
+    border-bottom: 2px solid #f1f1f1; /* Add a bottom border for separation */
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .modal-header .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333; /* Darker title text for better readability */
+  }
+  
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 15px;
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+
+  .modal-body1 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+    margin-top: 20px;
+    align-items: flex-start;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555; /* Light grey color for the labels */
+  }
+    
+  .form-control {
+    margin-top: -15px;
+    width: 100%;
+    padding: 10px 0; /* Padding on top and bottom, no horizontal padding */
+    border: none; /* Remove default borders */
+    border-bottom: 2px solid #ccc; /* Add bottom border only */
+    border-radius: 0; /* Remove rounded corners */
+    font-size: 1rem;
+    background-color: transparent; /* Transparent background for cleaner look */
+    box-shadow: none; /* Remove inset shadow */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s ease; /* Smooth transition for hover and focus */
+}
+
+.form-control:focus {
+    border-bottom: 2px solid #007bff; /* Highlight border on focus */
+    outline: none; /* Keep it clean on focus */
+}
+  
+.modal-footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end; /* Space between buttons */
+    margin-top: 2%;
+}
+
+
+.modal-footer1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end; /* Space between buttons */
+    margin-top: 17%;
+}
+  .modal-footer button {
+    font-weight: 400;
+    padding: 12px 17px;
+  }
+  
+  .btn-secondary {
+    padding: 10px 20px;
+    background-color: transparent; /* Light grey background */
+    color: #333; /* Dark text color */
+  }
+  
+  .btn-secondary:hover {
+    background-color: transparent; /* Slightly darker grey on hover */
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+    color: #333;
+  }
+  
+  
+
+  .btn-close {
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.btn-close:focus {
+    
+    box-shadow: none;
+}
+.btn-close:hover {
+    background-color: #f1e3ce;
+}
+
+.custom-close {
+    font-size: 1.5rem; /* Adjust size of the × symbol */
+    line-height: 1;
+    color: #000; /* Default color */
+    background: none; /* Removes any default button styling */
+    border: none; /* Removes border */
+    padding: 0 10px; /* Adds space around the symbol */
+    margin-left: auto; /* Aligns to the right */
+    cursor: pointer; /* Makes it look clickable */
+
+}
+
+.custom-close:hover {
+    color: #000; /* Red color on hover */
+    background-color: transparent;
+}
